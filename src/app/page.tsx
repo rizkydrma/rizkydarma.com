@@ -1,5 +1,4 @@
 'use client';
-import Seo from '@/components/Seo';
 import Landing from '@/components/landing';
 import Preloader from '@/components/preloader';
 import { AnimatePresence } from 'framer-motion';
@@ -23,7 +22,6 @@ export default function Home() {
 
   return (
     <main>
-      <Seo />
       <AnimatePresence mode="wait">{loading && <Preloader />}</AnimatePresence>
       <Landing />
     </main>
