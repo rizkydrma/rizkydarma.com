@@ -1,6 +1,11 @@
 {
   "name": "rizkydarma.com",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "author": {
+    "name": "Rizky Darma R",
+    "email": "rizky.darmarazak@gmail.com",
+    "url": "https://rizkydarma.com"
+  },
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -21,5 +26,6 @@
     "react-dom": "18.2.0",
     "tailwindcss": "3.3.3",
     "typescript": "5.1.6"
-  }
+  },
+  "license": "MIT"
 }
