@@ -6,20 +6,7 @@ import { cn } from '@/lib/utils';
 
 interface PreloaderProps {}
 
-const words = [
-  'Sampurasun',
-  'Hallo',
-  'Piye Kabare',
-  'Ba a kaba',
-  'Om suastiastu',
-  'Horas',
-  'Nara gerotelo',
-  'Ciao',
-  'Olà',
-  'やあ',
-  'Hallå',
-  'Hallo',
-];
+const words = ['Sampurasun', 'Hallo', 'Piye Kabare', 'Om suastiastu', 'Horas', 'Ciao', 'Olà', 'やあ', 'Hallo'];
 
 const Preloader: FC<PreloaderProps> = ({}) => {
   const [index, setIndex] = useState(0);
