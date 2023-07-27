@@ -21,7 +21,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="bg-white dark:bg-stone-900">
+    <main className="bg-white dark:bg-stone-950">
       <AnimatePresence mode="wait">{loading && <Preloader />}</AnimatePresence>
       <Landing />
     </main>

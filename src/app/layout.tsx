@@ -1,10 +1,11 @@
+import Meta from '@/components/Meta';
+import Providers from '@/components/Providers';
+import Navbar from '@/components/navbar';
+import { cn } from '@/lib/utils';
 import { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import Navbar from '@/components/navbar';
-import Meta from '@/components/Meta';
-import Providers from '@/components/Providers';
-import { cn } from '@/lib/utils';
+import Cursor from '@/components/Cursor';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -19,8 +20,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <Meta />
-      <body className={cn('bg-stone-50 dark:bg-stone-900 antialiased', inter.className)}>
+      <body className={cn('bg-stone-50 dark:bg-stone-950 antialiased', inter.className)}>
         <Providers>
+          <Cursor />
           <Navbar />
           {children}
         </Providers>

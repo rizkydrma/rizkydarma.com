@@ -16,8 +16,8 @@ let tabs = [
 const Navbar: FC<NavbarProps> = ({}) => {
   const [activeTab, setActiveTab] = useState(tabs?.[0]?.id);
   return (
-    <div className="fixed backdrop-blur-sm bg-white dark:bg-stone-900/75 z-50 top-0 left-0 right-0 h-20 border-b border-slate-300 dark:border-slate-700 shadow-sm flex items-center">
-      <div className="z-[99] container max-w-7xl mx-auto w-full items-center justify-between flex">
+    <div className="fixed backdrop-blur-sm bg-white/75 dark:bg-stone-950/75 z-[9999] top-0 left-0 right-0 h-20 border-b border-slate-50 dark:border-slate-700 shadow-sm flex items-center">
+      <div className="z-[9999] container max-w-7xl mx-auto w-full items-center justify-between flex">
         <div className="flex space-x-1">
           {tabs.map((tab) => (
             <button

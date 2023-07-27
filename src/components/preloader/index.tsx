@@ -50,7 +50,9 @@ const Preloader: FC<PreloaderProps> = ({}) => {
       variants={slideUp}
       initial="initial"
       exit="exit"
-      className={cn('h-[100vh] w-[100vw] flex items-center justify-center fixed z-[99] bg-stone-900')}
+      className={cn(
+        'h-[100vh] w-[100vw] flex items-center justify-center fixed z-[99999] dark:bg-stone-50 bg-stone-950',
+      )}
     >
       {dimension?.width > 0 && (
         <>
@@ -58,13 +60,18 @@ const Preloader: FC<PreloaderProps> = ({}) => {
             variants={opacity}
             initial="initial"
             animate="enter"
-            className="flex text-white text-lg items-center absolute z-10"
+            className="flex dark:text-stone-950 text-stone-50 text-lg items-center absolute z-10"
           >
-            <span className="block w-[10px] h-[10px] bg-white rounded-full mr-[10px]"></span>
+            <span className="block w-[10px] h-[10px] dark:bg-stone-950 bg-stone-50 rounded-full mr-[10px]"></span>
             {words[index]}
           </motion.p>
           <svg className="absolute top-0 w-full h-[calc(100%+300px)]">
-            <motion.path variants={curve} initial="initial" exit="exit" className="fill-stone-950"></motion.path>
+            <motion.path
+              variants={curve}
+              initial="initial"
+              exit="exit"
+              className="dark:fill-white fill-stone-950"
+            ></motion.path>
           </svg>
         </>
       )}
