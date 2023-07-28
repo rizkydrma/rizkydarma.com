@@ -24,8 +24,8 @@ const Navbar: FC<NavbarProps> = ({}) => {
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={cn(
-                `relative rounded-full px-3 py-1.5 text-sm font-medium text-stone-800  dark:text-white outline-sky-400 transition focus-visible:outline-2 z-[10000]`,
-                activeTab === tab.id ? '' : 'dark:hover:text-white/60 hover:text-blue-900',
+                `relative rounded-full px-3 py-1.5 text-sm font-medium text-stone-800  dark:text-white outline-yellow-400 transition focus-visible:outline-2 z-[10000]`,
+                activeTab === tab.id ? '' : 'dark:hover:text-white/60 hover:text-yellow-700',
               )}
               style={{
                 WebkitTapHighlightColor: 'transparent',

@@ -1,3 +1,4 @@
+'use client';
 import { gsap } from 'gsap';
 import { cloneElement, useEffect, useRef } from 'react';
 

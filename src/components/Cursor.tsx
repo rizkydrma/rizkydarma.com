@@ -10,10 +10,10 @@ const Cursor: FC<CursorProps> = ({}) => {
 
   return (
     <motion.div
-      className="fixed left-0 top-0 w-8 h-8 rounded-full bg-stone-950 dark:bg-white z-[999] pointer-events-none"
+      className="cursor"
       style={{
-        translateX: cursorXSpring,
-        translateY: cursorYSpring,
+        left: cursorXSpring,
+        top: cursorYSpring,
       }}
     />
   );

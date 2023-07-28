@@ -6,6 +6,7 @@ import { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import Cursor from '@/components/Cursor';
+import MediaSocial from '@/components/MediaSocial';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -25,6 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Cursor />
           <Navbar />
           {children}
+          <MediaSocial />
         </Providers>
       </body>
     </html>
