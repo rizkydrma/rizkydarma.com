@@ -9,29 +9,20 @@ export const slideUp = {
 };
 
 export const slideUpText = {
-  initial: {
-    y: '100%',
-  },
-  open: (i: number) => ({
-    y: '0%',
-    transition: { duration: 0.5, delay: 0.1 * i },
+  hidden: { opacity: 0, y: 10 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.3, delay: 3 + 0.3 * i },
   }),
-  closed: {
-    y: '100%',
-    transition: { duration: 0.5 },
-  },
 };
 
-export const opacity = {
+export const skewed = {
   initial: {
-    opacity: 0,
+    rotate: 0,
   },
-  open: {
-    opacity: 1,
-    transition: { duration: 1, delay: 4 },
-  },
-  closed: {
-    opacity: 0,
-    transition: { duration: 0.5 },
-  },
+  enter: (i: number) => ({
+    rotate: -3,
+    transition: { duration: 0.6, ease: [0.33, 1, 0.68, 1], delay: 5 + 0.3 * i },
+  }),
 };

@@ -6,7 +6,7 @@ import { cva, VariantProps } from 'class-variance-authority';
 const headingVariants = cva('text-stone-950 dark:text-stone-50 lg:text-left font-extrabold', {
   variants: {
     size: {
-      default: 'text-3xl md:text-3xl lg:text-3xl',
+      default: 'text-3xl md:text-4xl lg:text-4xl',
       lg: 'text-4xl md:text-5xl lg:text-5xl',
       sm: 'text-2xl md:text-2xl lg:text-3xl',
     },
@@ -26,4 +26,4 @@ const LargeHeading: FC<LargeHeadingProps> = ({ children, className, size, ...pro
   );
 };
 
-export default LargeHeading;
+export { LargeHeading, headingVariants };

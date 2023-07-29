@@ -1,4 +1,4 @@
-import { GithubIcon, TwitterIcon, YoutubeIcon, InstagramIcon, LinkedinIcon } from 'lucide-react';
+import { GithubIcon, TwitterIcon, YoutubeIcon, InstagramIcon, LinkedinIcon, FileTextIcon } from 'lucide-react';
 
 export const Icons = {
   GithubIcon,
@@ -6,6 +6,7 @@ export const Icons = {
   YoutubeIcon,
   InstagramIcon,
   LinkedinIcon,
+  FileTextIcon,
 };
 
 export default Icons;

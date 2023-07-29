@@ -16,7 +16,7 @@ let tabs = [
 const Navbar: FC<NavbarProps> = ({}) => {
   const [activeTab, setActiveTab] = useState(tabs?.[0]?.id);
   return (
-    <div className="fixed backdrop-blur-sm bg-white/75 dark:bg-stone-950/75 z-[9999] top-0 left-0 right-0 h-20 border-b border-slate-50 dark:border-slate-700 shadow-sm flex items-center">
+    <div className="fixed backdrop-blur-sm z-[9999] top-0 left-0 right-0 h-20 border-b border-stone-200 dark:border-stone-700 shadow-sm flex items-center">
       <div className="z-[9999] container max-w-7xl mx-auto w-full items-center justify-between flex">
         <div className="flex space-x-1">
           {tabs.map((tab) => (
@@ -25,7 +25,7 @@ const Navbar: FC<NavbarProps> = ({}) => {
               onClick={() => setActiveTab(tab.id)}
               className={cn(
                 `relative rounded-full px-3 py-1.5 text-sm font-medium text-stone-800  dark:text-white outline-yellow-400 transition focus-visible:outline-2 z-[10000]`,
-                activeTab === tab.id ? '' : 'dark:hover:text-white/60 hover:text-yellow-700',
+                activeTab === tab.id ? '' : 'dark:hover:text-white hover:text-yellow-400',
               )}
               style={{
                 WebkitTapHighlightColor: 'transparent',

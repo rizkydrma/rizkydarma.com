@@ -1,4 +1,5 @@
 'use client';
+import Globe from '@/components/Globe';
 import Landing from '@/components/landing';
 import Preloader from '@/components/preloader';
 import { AnimatePresence } from 'framer-motion';
@@ -21,9 +22,10 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="bg-white dark:bg-stone-950">
+    <main>
       <AnimatePresence mode="wait">{loading && <Preloader />}</AnimatePresence>
       <Landing />
+      <Globe />
     </main>
   );
 }

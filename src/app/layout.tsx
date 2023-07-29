@@ -1,3 +1,5 @@
+import Cursor from '@/components/Cursor';
+import MediaSocial from '@/components/MediaSocial';
 import Meta from '@/components/Meta';
 import Providers from '@/components/Providers';
 import Navbar from '@/components/navbar';
@@ -5,8 +7,6 @@ import { cn } from '@/lib/utils';
 import { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import Cursor from '@/components/Cursor';
-import MediaSocial from '@/components/MediaSocial';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -21,7 +21,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <Meta />
-      <body className={cn('bg-stone-50 dark:bg-stone-950 antialiased', inter.className)}>
+      <body
+        className={cn(
+          'bg-gradient-to-br from-stone-50 via-stone-200 to-stone-300 dark:from-stone-800 dark:via-stone-900 dark:to-stone-950 antialiased overflow-hidden',
+          inter.className,
+        )}
+      >
         <Providers>
           <Cursor />
           <Navbar />
