@@ -3,7 +3,7 @@ import { VariantProps, cva } from 'class-variance-authority';
 
 import { cn } from '@/lib/utils';
 
-export const paragraphVariants = cva('max-w-prose text-stone-800 dark:text-stone-300 my-2 text-center lg:text-left', {
+export const paragraphVariants = cva('max-w-prose text-stone-800 dark:text-stone-300 my-2 lg:text-left', {
   variants: {
     size: {
       default: 'text-base sm:text-lg',
