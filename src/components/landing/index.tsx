@@ -63,6 +63,7 @@ const Landing: FC<LandingProps> = ({}) => {
               initial="initial"
               variants={skewed}
               custom={1}
+              whileHover={{ rotate: 0 }}
               className="bg-yellow-300/60 dark:bg-indigo-700 relative inline-block px-1 z-20"
             >
               Frontend Developer.
@@ -115,13 +116,13 @@ const Landing: FC<LandingProps> = ({}) => {
             <Icons.FileTextIcon size={18} className="mr-1" /> Resume
           </Link>
           <Link
-            href="#"
+            href="https://github.com/rizkydrma"
             className="text-stone-600 font-medium dark:text-stone-400 text-sm inline-flex items-center hover:underline transition"
           >
             <Icons.GithubIcon size={18} className="mr-1" /> rizkydrma
           </Link>
           <Link
-            href="#"
+            href="https://github.com/rizkydarmar"
             className="text-stone-600 font-medium dark:text-stone-400 text-sm inline-flex items-center hover:underline transition"
           >
             <Icons.TwitterIcon size={18} className="mr-1" /> rizkydarmar
