@@ -1,12 +1,10 @@
 import Giscus, { Repo, Theme } from '@giscus/react';
 import { useTheme } from 'next-themes';
 
-import { commentFlag } from '@/constants/env';
-
 export default function Comment() {
   const { theme } = useTheme();
 
-  return commentFlag ? (
+  return (
     <Giscus
       key={theme}
       repo={(process.env.NEXT_PUBLIC_GISCUS_REPO as Repo) || ''}
@@ -18,5 +16,5 @@ export default function Comment() {
       emitMetadata="0"
       theme={theme as Theme}
     />
-  ) : null;
+  );
 }
