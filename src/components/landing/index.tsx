@@ -1,14 +1,14 @@
 'use client';
+import Icons from '@/components/Icons';
+import { buttonVariants } from '@/components/ui/Button';
+import { headingVariants } from '@/components/ui/LargeHeading';
+import { paragraphVariants } from '@/components/ui/Paragraph';
 import { cn } from '@/lib/utils';
 import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC, useEffect, useRef } from 'react';
 import { useHover } from 'usehooks-ts';
-import Icons from '@/components/Icons';
-import { buttonVariants } from '@/components/ui/Button';
-import { headingVariants } from '@/components/ui/LargeHeading';
-import { paragraphVariants } from '@/components/ui/Paragraph';
 import { skewed, slideUp, slideUpText } from './anim';
 
 interface LandingProps {}
@@ -70,7 +70,7 @@ const Landing: FC<LandingProps> = ({}) => {
             </motion.span>
             I craft captivating user interfaces and bring ideas to life through code.{' '}
             <motion.span
-              className="absolute inset-0 top-24 lg:top-20 w-36 left-48 z-10 opacity-0 hidden lg:block"
+              className="absolute top-24 lg:top-20 w-36 right-0 z-10 opacity-0 hidden lg:block"
               custom={4}
               animate="visible"
               initial="hidden"
@@ -98,15 +98,27 @@ const Landing: FC<LandingProps> = ({}) => {
           </motion.p>
         </div>
 
-        <motion.button
-          custom={4}
-          animate="visible"
-          initial="hidden"
-          variants={slideUpText}
-          className={buttonVariants({ className: 'w-fit' })}
-        >
-          Learn about me
-        </motion.button>
+        <div className="flex items-center gap-2">
+          <motion.button
+            custom={4}
+            animate="visible"
+            initial="hidden"
+            variants={slideUpText}
+            className={buttonVariants({ className: 'w-fit' })}
+          >
+            Learn about me
+          </motion.button>
+
+          <motion.div
+            custom={4}
+            animate="visible"
+            initial="hidden"
+            variants={slideUpText}
+            className={buttonVariants({ className: 'w-fit', variant: 'ghost' })}
+          >
+            <Link href="/guestbook">Sign My Guesbook !</Link>
+          </motion.div>
+        </div>
 
         <motion.div custom={5} animate="visible" initial="hidden" variants={slideUpText} className="mt-6 flex gap-4">
           <Link

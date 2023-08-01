@@ -3,6 +3,7 @@ import { cn } from '@/lib/utils';
 import { FC, useState } from 'react';
 import { motion } from 'framer-motion';
 import ThemeToggle from '../themetoggle';
+import { useRouter } from 'next/router';
 
 interface NavbarProps {}
 

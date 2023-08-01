@@ -68,7 +68,7 @@ const About: FC<AboutProps> = ({ setIsHovered, text, masking = false }) => {
   };
 
   return (
-    <div className="h-[80vh] h-[100vh] grid place-items-center text-stone-950 dark:text-stone-50" ref={container}>
+    <div className="h-[80vh] lg:h-[100vh] grid place-items-center text-stone-950 dark:text-stone-50" ref={container}>
       <div className="flex px-10 lg:px-32 flex-col max-h-[600px]">
         <h1
           className={cn(

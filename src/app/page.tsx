@@ -44,7 +44,7 @@ export default function Home() {
           setIsHovered={setIsHovered}
           masking
           text="My code dances to the beat of its own drum, swaying gracefully between reality and imagination.I conjure
-          interactive spells that captivate users and lead them on magical journeys."
+          interactive spells and lead them on magical journeys."
         />
       </motion.main>
       <main className="overflow-hidden">
