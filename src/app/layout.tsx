@@ -23,12 +23,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <Meta />
       <body
         className={cn(
-          'bg-gradient-to-br from-stone-50 via-stone-200 to-stone-300 dark:from-stone-800 dark:via-stone-900 dark:to-stone-950 antialiased overflow-hidden',
+          'bg-gradient-to-br from-stone-50 via-stone-200 to-stone-300 dark:from-stone-800 dark:via-stone-900 dark:to-stone-950 antialiased',
           inter.className,
         )}
       >
         <Providers>
-          <Cursor />
+          {/* <Cursor /> */}
           <Navbar />
           {children}
           <MediaSocial />

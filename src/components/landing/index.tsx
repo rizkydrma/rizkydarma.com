@@ -34,7 +34,7 @@ const Landing: FC<LandingProps> = ({}) => {
       variants={slideUp}
       initial="initial"
       animate="enter"
-      className={cn('relative flex h-[100vh] container items-center max-w-7xl')}
+      className={cn('relative flex h-[80vh] lg:h-[100vh] container items-center max-w-7xl')}
     >
       <div className="flex flex-col lg:px-6" ref={description}>
         <div ref={hoverRef} className={cn(`py-4 lg:max-w-2xl`, isInView ? 'fade-in-start' : '')}>

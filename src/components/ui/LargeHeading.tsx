@@ -16,11 +16,13 @@ const headingVariants = cva('text-stone-950 dark:text-stone-50 lg:text-left font
   },
 });
 
-interface LargeHeadingProps extends React.HTMLAttributes<HTMLHeadingElement>, VariantProps<typeof headingVariants> {}
+interface LargeHeadingProps extends React.HTMLAttributes<HTMLHeadingElement>, VariantProps<typeof headingVariants> {
+  ref?: any;
+}
 
-const LargeHeading: FC<LargeHeadingProps> = ({ children, className, size, ...props }) => {
+const LargeHeading: FC<LargeHeadingProps> = ({ children, className, size, ref, ...props }) => {
   return (
-    <h1 {...props} className={cn(headingVariants({ size, className }))}>
+    <h1 {...props} ref={ref} className={cn(headingVariants({ size, className }))}>
       {children}
     </h1>
   );
