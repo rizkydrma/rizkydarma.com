@@ -1,6 +1,6 @@
-import Cursor from '@/components/Cursor';
 import MediaSocial from '@/components/MediaSocial';
 import Meta from '@/components/Meta';
+import ProgressBarScroll from '@/components/ProgressBarScroll';
 import Providers from '@/components/Providers';
 import Navbar from '@/components/navbar';
 import { cn } from '@/lib/utils';
@@ -29,6 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       >
         <Providers>
           {/* <Cursor /> */}
+          <ProgressBarScroll />
           <Navbar />
           {children}
           <MediaSocial />
