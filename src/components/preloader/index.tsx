@@ -60,9 +60,9 @@ const Preloader: FC<PreloaderProps> = ({}) => {
             variants={opacity}
             initial="initial"
             animate="enter"
-            className="flex dark:text-stone-950 text-stone-50 text-lg items-center absolute z-10"
+            className="flex dark:text-stone-950 text-stone-50 text-lg lg:text-2xl items-center absolute z-10"
           >
-            <span className="block w-[10px] h-[10px] dark:bg-stone-950 bg-stone-50 rounded-full mr-[10px]"></span>
+            {/* <span className="block w-[10px] h-[10px] dark:bg-stone-950 bg-stone-50 rounded-full mr-[10px]"></span> */}
             {words[index]}
           </motion.p>
           <svg className="absolute top-0 w-full h-[calc(100%+300px)]">
