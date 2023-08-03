@@ -2,6 +2,8 @@
 import Globe from '@/components/Globe';
 import About from '@/components/about';
 import Landing from '@/components/landing';
+import ContentLanding from '@/components/landing/ContentLanding';
+import ContentLandingMask from '@/components/landing/ContentLandingMask';
 import Preloader from '@/components/preloader';
 import useMousePosition from '@/hook/useMousePosition';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -32,14 +34,14 @@ export default function Home() {
   return (
     <>
       <motion.main
-        className="mask dark:bg-stone-50 bg-stone-950 text-stone-50 dark:text-stone-950"
+        className="mask dark:bg-indigo-700 bg-yellow-300 text-stone-50 dark:text-stone-950"
         animate={{
           WebkitMaskPosition: `${x - size / 2}px ${y + scrollPosition - size / 2}px`,
           WebkitMaskSize: `${size}px`,
         }}
         transition={{ type: 'tween', ease: 'backOut', duration: 0.5 }}
       >
-        <Landing />
+        <Landing isHovered={isHovered} setIsHovered={setIsHovered} content={<ContentLandingMask />} />
         <About
           setIsHovered={setIsHovered}
           masking
@@ -49,7 +51,7 @@ export default function Home() {
       </motion.main>
       <main className="overflow-hidden">
         <AnimatePresence mode="wait">{loading && <Preloader />}</AnimatePresence>
-        <Landing />
+        <Landing isHovered={isHovered} setIsHovered={setIsHovered} content={<ContentLanding />} />
         <Globe />
         <About
           setIsHovered={setIsHovered}

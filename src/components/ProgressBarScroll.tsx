@@ -11,7 +11,7 @@ const ProgressBarScroll = () => {
   });
   return (
     <motion.div
-      className="fixed top-0 left-0 right-0 h-[6px] z-[999999] bg-yellow-400 dark:bg-indigo-600"
+      className="fixed top-0 left-0 right-0 h-[3px] z-[999999] bg-yellow-400 dark:bg-indigo-600"
       style={{ scaleX }}
     />
   );

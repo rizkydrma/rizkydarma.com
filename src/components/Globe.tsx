@@ -2,7 +2,7 @@ import React from 'react';
 
 const Globe = () => {
   return (
-    <div className='before:bg-[url("/ball.svg")] before:bg-contain before:bg-no-repeat before:absolute before:max-w-[600px] before:w-full before:h-full before:max-h-[100vh] before:lg:right-0 before:-bottom-[25%] before:opacity-10 before:dark:invert z-10'></div>
+    <div className='bg-[url("/ball.svg")] bg-contain bg-no-repeat absolute max-w-[600px] w-full h-full max-h-[100vh] lg:right-0 -bottom-[25%] opacity-10 dark:invert z-10'></div>
   );
 };
 

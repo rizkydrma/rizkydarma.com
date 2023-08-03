@@ -37,10 +37,7 @@ const MediaSocial: FC<MediaSocialProps> = ({}) => {
     <div className="fixed bottom-10 left-6 flex flex-col z-[9999] gap-y-1">
       {socials?.map((social) => (
         <Magnetic key={social?.href}>
-          <Link
-            href={social?.href}
-            className="p-2 transition-colors rounded-full hover:text-white  hover:dark:text-stone-950"
-          >
+          <Link href={social?.href} className="p-2 transition-colors rounded-full">
             {social?.icon}
           </Link>
         </Magnetic>
