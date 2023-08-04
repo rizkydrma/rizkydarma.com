@@ -1,11 +1,10 @@
 'use client';
 
-import { FC, useCallback } from 'react';
-import { SetStateAction, useEffect, useRef } from 'react';
+import { cn } from '@/lib/utils';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { cn } from '@/lib/utils';
 import { useTheme } from 'next-themes';
+import { FC, SetStateAction, useEffect, useRef } from 'react';
 
 interface AboutProps {
   setIsHovered: React.Dispatch<SetStateAction<boolean>>;
@@ -22,10 +21,9 @@ const About: FC<AboutProps> = ({ setIsHovered, text, masking = false }) => {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     createAnimation();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const createAnimation = useCallback(() => {
+  const createAnimation = () => {
     gsap.to(refs.current, {
       scrollTrigger: {
         trigger: container.current,
@@ -34,18 +32,17 @@ const About: FC<AboutProps> = ({ setIsHovered, text, masking = false }) => {
         end: `+=400`,
       },
       opacity: 1,
-      color: theme === 'light' ? '#0c0a09' : '#fafaf9',
       ease: 'none',
       stagger: 0.1,
     });
-  }, [theme]);
+  };
 
   const splitWords = (text: string) => {
     let body: any = [];
     text.split(' ').forEach((word, i) => {
       const letters = splitLetters(word);
       body.push(
-        <p className="mr-2.5 text-red-600" key={word + '_' + i}>
+        <p className="mr-2.5" key={word + '_' + i}>
           {letters}
         </p>,
       );
@@ -58,7 +55,7 @@ const About: FC<AboutProps> = ({ setIsHovered, text, masking = false }) => {
     word.split('').forEach((letter, i) => {
       letters.push(
         <span
-          className="dark:text-white/50 text-stone-950/20"
+          className="opacity-20"
           key={letter + '_' + i}
           ref={(el: any) => {
             refs.current.push(el);
@@ -91,7 +88,7 @@ const About: FC<AboutProps> = ({ setIsHovered, text, masking = false }) => {
           }}
           className={cn(
             'text-2xl lg:text-6xl font-bold w-full flex flex-wrap',
-            masking ? 'text-stone-950 dark:text-stone-50' : '',
+            masking ? 'text-stone-50 dark:text-stone-950' : '',
           )}
         >
           {masking ? text : splitWords(text)}
