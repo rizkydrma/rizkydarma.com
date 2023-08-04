@@ -26,3 +26,17 @@ export const skewed = {
     transition: { duration: 0.6, ease: [0.33, 1, 0.68, 1], delay: 5 + 0.3 * i },
   }),
 };
+
+export const bounce = {
+  initial: {
+    opacity: 0,
+    rotate: 90,
+    scale: 0,
+  },
+  enter: (i: number) => ({
+    opacity: 1,
+    rotate: 0,
+    scale: 1,
+    transition: { duration: 0.5, ease: [0.33, 1, 0.68, 1], delay: 3 + 0.3 * i },
+  }),
+};

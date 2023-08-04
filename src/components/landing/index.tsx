@@ -11,18 +11,10 @@ interface LandingProps {
 }
 
 const Landing: FC<LandingProps> = ({ setIsHovered, isHovered, content }) => {
-  const description = useRef(null);
-
   return (
-    <motion.main
-      variants={slideUp}
-      initial="initial"
-      animate="enter"
-      className={cn('relative flex h-[80vh] lg:h-[100vh] container items-center max-w-7xl')}
-    >
+    <main className={cn('relative flex h-[80vh] lg:h-[100vh] container max-w-7xl')}>
       <div
-        className="flex flex-col lg:px-6"
-        ref={description}
+        className="flex flex-col lg:px-6 pt-[30vh]"
         onMouseEnter={() => {
           setIsHovered(true);
         }}
@@ -32,7 +24,7 @@ const Landing: FC<LandingProps> = ({ setIsHovered, isHovered, content }) => {
       >
         {content}
       </div>
-    </motion.main>
+    </main>
   );
 };
 
