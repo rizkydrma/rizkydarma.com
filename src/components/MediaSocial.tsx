@@ -34,7 +34,7 @@ const socials: TSocial[] = [
 
 const MediaSocial: FC<MediaSocialProps> = ({}) => {
   return (
-    <div className="fixed bottom-10 left-6 flex flex-col z-[9999] gap-y-1">
+    <div className="fixed bottom-20 left-6 flex flex-col z-[9999] gap-y-1">
       {socials?.map((social) => (
         <Magnetic key={social?.href}>
           <Link href={social?.href} className="p-2 transition-colors rounded-full">

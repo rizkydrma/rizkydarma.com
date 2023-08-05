@@ -12,7 +12,7 @@ const slideUp = {
 
 const Guestbook = () => {
   return (
-    <div className="container max-w-7xl mx-auto pt-40">
+    <div className="container max-w-7xl mx-auto pt-40 min-h-[90vh]">
       <motion.h1
         custom={1}
         animate="visible"
