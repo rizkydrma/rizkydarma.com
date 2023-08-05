@@ -70,7 +70,7 @@ const About: FC<AboutProps> = ({ setIsHovered, text, masking = false }) => {
 
   return (
     <div className="h-[80vh] lg:h-[100vh] text-stone-950 dark:text-stone-50" ref={container}>
-      <div className="flex px-10 lg:px-32 2xl:px-60 flex-col pt-[35vh]">
+      <div className="flex px-10 lg:px-32 2xl:px-60 flex-col pt-[20vh]">
         <h1
           className={cn(
             'text-sm lg:text-lg font-mono uppercase my-3',

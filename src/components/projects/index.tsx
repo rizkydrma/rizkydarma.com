@@ -2,29 +2,94 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import Project from './components/Project';
+import Project, { ProjectProps } from './components/Project';
 import gsap from 'gsap';
+import { Button, buttonVariants } from '../ui/Button';
+import Link from 'next/link';
 
-const projects = [
+type TLogoKey = 'tailwind' | 'leaflet' | 'nextjs' | 'react' | 'sass';
+
+export interface ITechProject {
+  name: string;
+  logo_key: TLogoKey;
+}
+
+export type IProject = {
+  title: string;
+  subtitle: string;
+  src: string;
+  color: string;
+  tech: ITechProject[];
+};
+
+const projects: IProject[] = [
   {
-    title: 'C2 Montreal',
-    src: 'c2montreal.png',
+    title: 'Find Medical Vaccine',
+    subtitle: 'lorem epsum dolor sit amet',
+    src: 'https://res.cloudinary.com/de3n7a1r0/image/upload/v1690243161/Screenshot_2023-07-25_at_06.57.24-min_ewvdn0.png',
     color: '#000000',
+    tech: [
+      {
+        name: 'Tailwind',
+        logo_key: 'tailwind',
+      },
+      {
+        name: 'Next JS 13',
+        logo_key: 'nextjs',
+      },
+      {
+        name: 'Leaflet',
+        logo_key: 'leaflet',
+      },
+    ],
   },
   {
-    title: 'Office Studio',
-    src: 'c2montreal.png',
+    title: 'Karyamultisejatiwood',
+    subtitle: 'lorem epsum dolor sit amet',
+    src: 'https://res.cloudinary.com/de3n7a1r0/image/upload/v1691245870/Screenshot_2023-08-05_at_21.26.50-min_1_zlpyjz.png',
     color: '#8C8C8C',
+    tech: [
+      {
+        name: 'React',
+        logo_key: 'react',
+      },
+      {
+        name: 'Sass',
+        logo_key: 'sass',
+      },
+    ],
   },
   {
-    title: 'Locomotive',
-    src: 'c2montreal.png',
+    title: 'Kerabat Motret',
+    subtitle: 'lorem epsum dolor sit amet',
+    src: 'https://res.cloudinary.com/de3n7a1r0/image/upload/v1691245436/Screenshot_2023-08-05_at_21.21.18-min_o0ajaw.png',
     color: '#EFE8D3',
+    tech: [
+      {
+        name: 'React',
+        logo_key: 'react',
+      },
+      {
+        name: 'Sass',
+        logo_key: 'sass',
+      },
+    ],
   },
   {
-    title: 'Silencio',
-    src: 'c2montreal.png',
+    title: 'Gheebat App',
+    subtitle: 'lorem epsum dolor sit amet',
+    src: 'https://res.cloudinary.com/de3n7a1r0/image/upload/v1691245879/Screenshot_2023-08-05_at_21.28.40-min_cwxjro.png',
     color: '#706D63',
+    tech: [
+      {
+        name: 'React',
+        logo_key: 'react',
+      },
+      {
+        name: 'Tailwind',
+        logo_key: 'tailwind',
+      },
+    ],
   },
 ];
 
@@ -75,61 +140,77 @@ const Projects = () => {
   };
 
   return (
-    <main
-      onMouseMove={(e) => {
-        moveItems(e.clientX, e.clientY);
-      }}
-      className="flex items-center container max-w-7xl mx-auto flex-col mt-[300px] h-[80vh] relative"
-    >
-      <div className="max-w-[1400px] w-full flex flex-col items-center justify-center mb-[100px]">
-        {projects.map((project, index) => {
-          return <Project index={index} title={project.title} manageModal={manageModal} key={index} />;
-        })}
-      </div>
-      <>
-        <motion.div
-          ref={modalContainer}
-          variants={scaleAnimation}
-          initial="initial"
-          animate={active ? 'enter' : 'closed'}
-          className="h-[350px] w-[400px] fixed top-[50%] left-[50%] bg-white pointer-events-none overflow-hidden z-[999]"
-        >
-          <div
-            style={{ top: index * -100 + '%', transition: 'top 0.5s cubic-bezier(0.76, 0, 0.24, 1)' }}
-            className="h-full w-full relative"
+    <section className="container max-w-7xl mx-auto h-[80vh] relative mt-[300px]">
+      <h1 className="text-sm lg:text-lg font-mono uppercase my-3 lg:px-6">Featured Project</h1>
+
+      <main
+        onMouseMove={(e) => {
+          moveItems(e.clientX, e.clientY);
+        }}
+        className="flex items-center flex-col lg:px-6 pt-6"
+      >
+        <div className="max-w-[1400px] w-full flex flex-col items-center justify-center mb-[100px]">
+          {projects.map((project, index) => {
+            return (
+              <Project
+                index={index}
+                title={project.title}
+                manageModal={manageModal}
+                key={index}
+                subtitle={project?.subtitle}
+                tech={project?.tech}
+              />
+            );
+          })}
+          <Link href="/projects" className={buttonVariants({})}>
+            See more project
+          </Link>
+        </div>
+        <>
+          <motion.div
+            ref={modalContainer}
+            variants={scaleAnimation}
+            initial="initial"
+            animate={active ? 'enter' : 'closed'}
+            className="h-[350px] w-[400px] fixed top-[50%] left-[50%] bg-stone-50 pointer-events-none overflow-hidden z-[999]"
           >
-            {projects.map((project, index) => {
-              const { src, color } = project;
-              return (
-                <div
-                  className="h-full w-full flex items-center justify-center"
-                  style={{ backgroundColor: color }}
-                  key={`modal_${index}`}
-                >
-                  <Image src={`/images/${src}`} width={300} height={0} alt="image" className="h-auto" />
-                </div>
-              );
-            })}
-          </div>
-        </motion.div>
-        <motion.div
-          ref={cursor}
-          className="w-[80px] h-[80px] rounded-full bg-yellow-400 dark:bg-indigo-600 text-white fixed z-[999] flex items-center justify-center text-lg pointer-events-none"
-          variants={scaleAnimation}
-          initial="initial"
-          animate={active ? 'enter' : 'closed'}
-        ></motion.div>
-        <motion.div
-          ref={cursorLabel}
-          className="w-[80px] h-[80px] rounded-full bg-yellow-400 dark:bg-indigo-600 text-white fixed z-[999] flex items-center justify-center text-lg pointer-events-none bg-transparent"
-          variants={scaleAnimation}
-          initial="initial"
-          animate={active ? 'enter' : 'closed'}
-        >
-          View
-        </motion.div>
-      </>
-    </main>
+            <div
+              style={{ top: index * -100 + '%', transition: 'top 0.5s cubic-bezier(0.76, 0, 0.24, 1)' }}
+              className="h-full w-full relative"
+            >
+              {projects.map((project, index) => {
+                const { src, color } = project;
+                return (
+                  <div
+                    className="h-full w-full flex items-center justify-center"
+                    style={{ backgroundColor: color }}
+                    key={`modal_${index}`}
+                  >
+                    <Image src={src} width={350} height={0} alt="image" className="h-auto" />
+                  </div>
+                );
+              })}
+            </div>
+          </motion.div>
+          <motion.div
+            ref={cursor}
+            className="w-[80px] h-[80px] rounded-full bg-yellow-400 dark:bg-indigo-600 text-white fixed z-[999] flex items-center justify-center text-lg pointer-events-none"
+            variants={scaleAnimation}
+            initial="initial"
+            animate={active ? 'enter' : 'closed'}
+          ></motion.div>
+          <motion.div
+            ref={cursorLabel}
+            className="w-[80px] h-[80px] rounded-full bg-yellow-400 dark:bg-indigo-600 text-white fixed z-[999] flex items-center justify-center text-lg pointer-events-none bg-transparent"
+            variants={scaleAnimation}
+            initial="initial"
+            animate={active ? 'enter' : 'closed'}
+          >
+            View
+          </motion.div>
+        </>
+      </main>
+    </section>
   );
 };
 
