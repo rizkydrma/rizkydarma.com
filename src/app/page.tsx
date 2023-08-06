@@ -1,7 +1,7 @@
 'use client';
 import Globe from '@/components/Globe';
 import About from '@/components/about';
-import Experience from '@/components/experience';
+import Experiences from '@/components/experiences';
 import Landing from '@/components/landing';
 import ContentLanding from '@/components/landing/ContentLanding';
 import ContentLandingMask from '@/components/landing/ContentLandingMask';
@@ -55,7 +55,7 @@ export default function Home() {
           interactive spells and lead them on magical journeys."
         />
         <Projects />
-        <Experience />
+        <Experiences />
       </motion.main>
       <main className="overflow-hidden">
         <AnimatePresence mode="wait">{loading && <Preloader />}</AnimatePresence>
@@ -67,7 +67,7 @@ export default function Home() {
           of interfaces, and a conductor of digital symphonies."
         />
         <Projects />
-        <Experience />
+        <Experiences />
       </main>
     </>
   );
