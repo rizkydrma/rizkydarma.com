@@ -1,11 +1,12 @@
 'use client';
-import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
-import Project, { ProjectProps } from './components/Project';
 import gsap from 'gsap';
-import { Button, buttonVariants } from '../ui/Button';
+import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect, useRef, useState } from 'react';
+import { buttonVariants } from '../ui/Button';
+import Highlight from '../ui/Highlight';
+import Project from './components/Project';
 
 type TLogoKey = 'tailwind' | 'leaflet' | 'nextjs' | 'react' | 'sass';
 
@@ -140,8 +141,8 @@ const Projects = () => {
   };
 
   return (
-    <section className="container max-w-7xl mx-auto h-[80vh] relative mt-[300px]">
-      <h1 className="text-sm lg:text-lg font-mono uppercase my-3 lg:px-6">Featured Project</h1>
+    <section id="projects" className="container max-w-7xl mx-auto h-[80vh] relative mt-[300px]">
+      <Highlight className="text-sm lg:text-lg font-mono uppercase my-3 lg:mx-6">Featured Project</Highlight>
 
       <main
         onMouseMove={(e) => {

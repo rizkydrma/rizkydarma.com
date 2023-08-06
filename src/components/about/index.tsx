@@ -3,8 +3,8 @@
 import { cn } from '@/lib/utils';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useTheme } from 'next-themes';
 import { FC, SetStateAction, useEffect, useRef } from 'react';
+import Highlight from '../ui/Highlight';
 
 interface AboutProps {
   setIsHovered: React.Dispatch<SetStateAction<boolean>>;
@@ -13,7 +13,6 @@ interface AboutProps {
 }
 
 const About: FC<AboutProps> = ({ setIsHovered, text, masking = false }) => {
-  const { theme } = useTheme();
   const container = useRef(null);
 
   const refs = useRef<any>([]);
@@ -69,16 +68,13 @@ const About: FC<AboutProps> = ({ setIsHovered, text, masking = false }) => {
   };
 
   return (
-    <div className="h-[80vh] lg:h-[100vh] text-stone-950 dark:text-stone-50" ref={container}>
-      <div className="flex px-10 lg:px-32 2xl:px-60 flex-col pt-[20vh]">
-        <h1
-          className={cn(
-            'text-sm lg:text-lg font-mono uppercase my-3',
-            masking ? 'text-stone-50 dark:text-stone-950' : '',
-          )}
+    <section id="about" className="h-[80vh] lg:h-[100vh] text-stone-950 dark:text-stone-50" ref={container}>
+      <div className=" px-10 lg:px-32 2xl:px-60 pt-[20vh]">
+        <Highlight
+          className={cn('text-sm lg:text-lg font-mono uppercase', masking ? 'text-stone-50 dark:text-stone-950' : '')}
         >
           About Me
-        </h1>
+        </Highlight>
         <div
           onMouseEnter={() => {
             setIsHovered(true);
@@ -94,7 +90,7 @@ const About: FC<AboutProps> = ({ setIsHovered, text, masking = false }) => {
           {masking ? text : splitWords(text)}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
