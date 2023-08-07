@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 const footerLinks = [
   {
-    text: 'Guesbook',
+    text: 'Guestbook',
     href: '/guestbook',
     tooltip: 'Leave your sign on my website',
   },
