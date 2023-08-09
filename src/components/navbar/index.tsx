@@ -24,7 +24,7 @@ const Navbar: FC<NavbarProps> = ({}) => {
             <Link
               href={tab?.href}
               key={tab?.id}
-              className="relative rounded-full px-3 py-1.5 text-sm font-medium text-stone-800  dark:text-white outline-yellow-400 transition focus-visible:outline-2"
+              className="relative rounded-full px-1.5 lg:px-3 py-1.5 font-medium text-stone-800  dark:text-white outline-yellow-400 transition focus-visible:outline-2 text-xs lg:text-sm"
             >
               {tab?.label}
             </Link>

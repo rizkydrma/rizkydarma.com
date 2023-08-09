@@ -33,8 +33,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <ProgressBarScroll />
           <Navbar />
           {children}
-          <MediaSocial />
           <Footer />
+          <MediaSocial />
         </Providers>
       </body>
     </html>

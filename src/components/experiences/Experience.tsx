@@ -32,45 +32,45 @@ const Experience: FC<ExperienceProps> = ({}) => {
             height={0}
             className="h-auto mr-2"
           />
-          <LargeHeading className="">Siesta</LargeHeading>
+          <LargeHeading className="text-2xl">Siesta</LargeHeading>
         </div>
 
         <Magnetic>
-          <div className="h-fit w-fit rounded-md bg-gradient-to-r from-yellow-500 dark:from-sky-400 via-orange-500 dark:via-blue-500 to-pink-500 dark:to-indigo-600 p-1 shadow-md">
+          <div className="h-fit w-fit rounded-md bg-gradient-to-r from-yellow-500 dark:from-sky-400 via-orange-500 dark:via-blue-500 to-pink-500 dark:to-indigo-600 p-0.5 lg:p-1 shadow-md">
             <div className="flex h-full w-full items-center justify-center back">
-              <h1 className="text-sm font-medium p-2 text-white">Frontend Developer</h1>
+              <h1 className="text-xs lg:text-sm font-medium p-2 text-white">Frontend Developer</h1>
             </div>
           </div>
         </Magnetic>
       </div>
 
       <div className="pt-6">
-        <h1 className="text-lg font-medium">🚀 April 2022 - Present</h1>
+        <h1 className="text-base lg:text-lg font-medium">🚀 April 2022 - Present</h1>
 
-        <p className="pt-4 lg:w-[70%] font-medium">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, modi nulla. Eaque consectetur sapiente
-          asperiores maiores deserunt! Ad, voluptate optio. Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-          Voluptates, rem!
+        <p className="pt-4 lg:w-[80%] font-medium lg:text-base text-sm">
+          Working on the core web experience team that focusing on developer experience, user interface & maintain
+          product.
         </p>
       </div>
 
       <div className="pt-6">
-        <h1 className="text-lg font-medium">
-          <Icons.CheckIcon size={22} className="inline-flex mr-1" />
+        <h1 className="text-sm lg:text-lg font-medium">
+          <Icons.CheckIcon size={20} className="inline-flex mr-1" />
           Responsibilities and things I did
         </h1>
 
-        <ul className="list-disc pl-6 pt-4 w-[90%]">
-          <li className="tracking-wide leading-relaxed">
-            Lead or contribute to technical design, implementation, deployment, and operational excellence efforts to
-            build and run scalable solutions for complex engineering challenges.
+        <ul className="list-disc pl-3 lg:pl-6 pt-4 w-[90%]">
+          <li className="tracking-wide leading-relaxed text-xs lg:text-base">
+            Handle several interrelated projects to integrate with each other.
           </li>
-          <li className="tracking-wide leading-relaxed">
-            Champion high-quality products and services through adopting best practices in resilience, observability,
-            maintainability, and testing.
+          <li className="tracking-wide leading-relaxed text-xs lg:text-base">
+            Ship a high quality code and result with minimum bug deployed to production
           </li>
-          <li className="tracking-wide leading-relaxed">
+          <li className="tracking-wide leading-relaxed text-xs lg:text-base">
             Collaborate with cross-functional teams in delivering customer-centric tech products and services.
+          </li>
+          <li className="tracking-wide leading-relaxed text-xs lg:text-base">
+            Have a good way to explain things clearly to the team even to the non-technical person.
           </li>
         </ul>
       </div>

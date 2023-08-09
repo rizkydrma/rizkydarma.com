@@ -57,18 +57,17 @@ export default function Home() {
         <Projects />
         <Experiences />
       </motion.main>
-      <main className="overflow-hidden">
-        <AnimatePresence mode="wait">{loading && <Preloader />}</AnimatePresence>
-        <Landing isHovered={isHovered} setIsHovered={setIsHovered} content={<ContentLanding />} />
-        <Globe />
-        <About
-          setIsHovered={setIsHovered}
-          text="In the world of frontend development, I`m not just a developer; I`m a mad scientist of pixels, a dreamweaver
+
+      <AnimatePresence mode="wait">{loading && <Preloader />}</AnimatePresence>
+      <Landing isHovered={isHovered} setIsHovered={setIsHovered} content={<ContentLanding />} />
+      <Globe />
+      <About
+        setIsHovered={setIsHovered}
+        text="In the world of frontend development, I`m not just a developer; I`m a mad scientist of pixels, a dreamweaver
           of interfaces, and a conductor of digital symphonies."
-        />
-        <Projects />
-        <Experiences />
-      </main>
+      />
+      <Projects />
+      <Experiences />
     </>
   );
 }

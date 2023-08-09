@@ -26,7 +26,7 @@ export type IProject = {
 const projects: IProject[] = [
   {
     title: 'Find Medical Vaccine',
-    subtitle: 'lorem epsum dolor sit amet',
+    subtitle: 'WEB GIS dissemination of health centers',
     src: 'https://res.cloudinary.com/de3n7a1r0/image/upload/v1690243161/Screenshot_2023-07-25_at_06.57.24-min_ewvdn0.png',
     color: '#000000',
     tech: [
@@ -46,7 +46,7 @@ const projects: IProject[] = [
   },
   {
     title: 'Karyamultisejatiwood',
-    subtitle: 'lorem epsum dolor sit amet',
+    subtitle: 'Company Profile For Furniture Factory',
     src: 'https://res.cloudinary.com/de3n7a1r0/image/upload/v1691245870/Screenshot_2023-08-05_at_21.26.50-min_1_zlpyjz.png',
     color: '#8C8C8C',
     tech: [
@@ -62,7 +62,7 @@ const projects: IProject[] = [
   },
   {
     title: 'Kerabat Motret',
-    subtitle: 'lorem epsum dolor sit amet',
+    subtitle: 'Portofolio a photography service',
     src: 'https://res.cloudinary.com/de3n7a1r0/image/upload/v1691245436/Screenshot_2023-08-05_at_21.21.18-min_o0ajaw.png',
     color: '#EFE8D3',
     tech: [
@@ -78,7 +78,7 @@ const projects: IProject[] = [
   },
   {
     title: 'Gheebat App',
-    subtitle: 'lorem epsum dolor sit amet',
+    subtitle: 'Forum App',
     src: 'https://res.cloudinary.com/de3n7a1r0/image/upload/v1691245879/Screenshot_2023-08-05_at_21.28.40-min_cwxjro.png',
     color: '#706D63',
     tech: [
@@ -141,7 +141,7 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="container max-w-7xl mx-auto h-[80vh] relative mt-[300px]">
+    <section id="projects" className="container max-w-7xl mx-auto min-h-[80vh] relative lg:mt-[300px]">
       <Highlight className="text-sm lg:text-lg font-mono uppercase my-3 lg:mx-6">Featured Project</Highlight>
 
       <main

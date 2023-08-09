@@ -1,9 +1,8 @@
 'use client';
-import Tooltip from '@/components/Tooltip';
+import { IMAGES } from '@/lib/image';
+import Image from 'next/image';
 import { FC } from 'react';
 import { ITechProject } from '..';
-import Image from 'next/image';
-import { IMAGES } from '@/lib/image';
 
 export interface ProjectProps {
   index: number;
@@ -25,7 +24,7 @@ const Project: FC<ProjectProps> = ({ index, title, subtitle, manageModal, tech }
       className="flex w-full justify-between items-center py-4 border-t-2 border-t-gray-300 cursor-pointer transition-all text-stone-950 dark:text-stone-50"
     >
       <div>
-        <h2 className="text-lg lg:text-2xl font-bold">{title}</h2>
+        <h2 className="text-base lg:text-2xl font-bold">{title}</h2>
         <p className="text-xs lg:text-sm font-light tracking-wide">{subtitle}</p>
       </div>
 
