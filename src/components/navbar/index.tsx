@@ -1,9 +1,7 @@
 'use client';
-import { cn } from '@/lib/utils';
-import { motion } from 'framer-motion';
-import { FC, useState } from 'react';
-import ThemeToggle from '../themetoggle';
 import Link from 'next/link';
+import { FC } from 'react';
+import ThemeToggle from '../themetoggle';
 
 interface NavbarProps {}
 
@@ -15,9 +13,8 @@ let tabs = [
 ];
 
 const Navbar: FC<NavbarProps> = ({}) => {
-  // const [activeTab, setActiveTab] = useState(tabs?.[0]?.id);
   return (
-    <div className="fixed backdrop-blur-sm z-[9999] top-0 left-0 right-0 h-20 border-b border-stone-200 dark:border-stone-700 shadow-sm flex items-center">
+    <div className="fixed backdrop-blur-sm z-[9999] top-0 left-0 right-0 h-20 border-b border-stone-200 bg-stone-50 dark:border-stone-700 dark:bg-stone-950 shadow-sm dark:shadow-stone-900 flex items-center ">
       <div className="z-[9999] container max-w-7xl mx-auto w-full items-center justify-between flex">
         <div className="flex space-x-1">
           {tabs?.map((tab) => (
@@ -29,28 +26,6 @@ const Navbar: FC<NavbarProps> = ({}) => {
               {tab?.label}
             </Link>
           ))}
-          {/* {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={cn(
-                `relative rounded-full px-3 py-1.5 text-sm font-medium text-stone-800  dark:text-white outline-yellow-400 transition focus-visible:outline-2 z-[10000]`,
-                activeTab === tab.id ? '' : 'dark:hover:text-white hover:text-yellow-400',
-              )}
-              style={{
-                WebkitTapHighlightColor: 'transparent',
-              }}
-            >
-              {activeTab === tab.id && (
-                <motion.span
-                  layoutId="bubble"
-                  className="absolute inset-0 z-10 bg-stone-100/50 shadow  dark:bg-stone-700/50  rounded-full"
-                  transition={{ type: 'spring', bounce: 0.5, duration: 0.6 }}
-                />
-              )}
-              {tab.label}
-            </button>
-          ))} */}
         </div>
         <ThemeToggle />
       </div>
