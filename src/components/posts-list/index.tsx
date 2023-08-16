@@ -10,7 +10,7 @@ import { headingVariants } from '../ui/LargeHeading';
 import { paragraphVariants } from '../ui/Paragraph';
 
 interface PostListProps {
-  posts: (Post | null)[];
+  posts: Post[];
   paginate?: boolean;
 }
 
@@ -23,7 +23,7 @@ const PostList: FC<PostListProps> = ({ posts, paginate }) => {
   const [showMore, setShowMore] = useState(6);
   const [clicked, setClicked] = useState(false);
   const [search, setSearch] = useState('');
-  const [filteredPosts, setFilteredPosts] = useState<(Post | null)[]>(posts);
+  const [filteredPosts, setFilteredPosts] = useState<Post[]>(posts);
 
   const onHandleSearch = (event: ChangeEvent<HTMLInputElement>) => {
     setSearch(event.currentTarget.value);
@@ -69,8 +69,8 @@ const PostList: FC<PostListProps> = ({ posts, paginate }) => {
               animate="visible"
               initial="hidden"
               variants={slideUp}
-              custom={clicked ? index * 0.1 : 2.5 + index * 0.2}
-              key={post?.slug}
+              custom={clicked || search ? index * 0.1 : 2.5 + index * 0.2}
+              key={post?.slug + index}
             >
               <BlogCard post={post} />
             </motion.li>

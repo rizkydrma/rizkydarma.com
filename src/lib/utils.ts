@@ -1,5 +1,6 @@
 import { ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import moment from 'moment';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -35,4 +36,10 @@ export function openGraph({
   return `https://og-rizkydrma.vercel.app/api/gradient?siteName=${ogSiteName}&description=${ogDesc}&logo=${ogLogo}${
     ogTemplateTitle ? `&templateTitle=${ogTemplateTitle}` : ''
   }`;
+}
+
+export function formatDate(date: string, format?: string) {
+  format = 'MMMM DD, YYYY';
+
+  return moment(date).format(format);
 }

@@ -11,8 +11,6 @@ const Aside: FC<AsideProps> = () => {
   const [toc, setToc] = useState<HeadingScrollSpy>();
   const minLevel = toc?.reduce((min, item) => (item.level < min ? item.level : min), 10) ?? 0;
 
-  console.log({ activeSection });
-
   useEffect(() => {
     const headings = document.querySelectorAll('.mdx h1, .mdx h2, .mdx h3');
 

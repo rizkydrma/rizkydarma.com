@@ -2,7 +2,7 @@
 title: Building a blog with Next.js 13 and React Server Components
 description: Use MDX, RSC, and Bright to build a blog with Next.js 13.
 slug: build-a-blog-with-nextjs-13
-date: Apr 16, 2023
+publishedAt: '2021-03-11'
 banner: 'u67wtugwwcxwl1orm9t2'
 ---
 
@@ -616,7 +616,7 @@ const main = () => {
     feed.item({
       title: post.title,
       description: renderPost(post.body),
-      date: new Date(post?.date),
+      publishedAt: '2021-03-11'new Date(post?.date),
       author: 'Max Leiter',
       url,
       guid: url,

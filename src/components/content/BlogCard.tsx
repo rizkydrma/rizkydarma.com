@@ -2,9 +2,11 @@ import { Post } from '@/lib/types';
 import { FC } from 'react';
 import CloudinaryImg from '../images/CloudinaryImage';
 import UnstyledLink from '../links/UnstyledLink';
+import { formatDate } from '@/lib/utils';
+import Badge from '../badge';
 
 interface BlogCardProps {
-  post: Post | null;
+  post: Post;
 }
 
 const BlogCard: FC<BlogCardProps> = ({ post }) => {
@@ -27,19 +29,14 @@ const BlogCard: FC<BlogCardProps> = ({ post }) => {
 
           <div className="flex absolute top-3 left-4 gap-2">
             {post?.tags?.split(',').map((tag) => (
-              <div
-                className="rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-60  bg-gray-400 text-white text-xs py-0.5 px-2"
-                key={tag}
-              >
-                {tag}
-              </div>
+              <Badge value={tag} key={tag} />
             ))}
           </div>
         </div>
 
         <div className="p-4">
           <h1 className="text-md font-medium mt-2">{post?.title}</h1>
-          <p className="text-xs text-stone-500 mt-4">{post?.date}</p>
+          <p className="text-xs text-stone-500 mt-4">{formatDate(post?.publishedAt)}</p>
           <p className="text-sm text-stone-700 dark:text-stone-300 mt-2">{post?.description}</p>
         </div>
       </div>
