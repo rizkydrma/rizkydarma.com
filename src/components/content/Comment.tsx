@@ -1,3 +1,4 @@
+'use client';
 import Giscus, { Repo, Theme } from '@giscus/react';
 import { useTheme } from 'next-themes';
 
@@ -10,7 +11,7 @@ export default function Comment() {
       repo={(process.env.NEXT_PUBLIC_GISCUS_REPO as Repo) || ''}
       repoId={process.env.NEXT_PUBLIC_GISCUS_REPO_ID || ''}
       category="General"
-      categoryId="DIC_kwDOE66rZ84B--B0"
+      categoryId="DIC_kwDOJ_cK984CYRYW"
       mapping="pathname"
       reactionsEnabled="0"
       emitMetadata="0"

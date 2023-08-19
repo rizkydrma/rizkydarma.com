@@ -1,9 +1,15 @@
-import Aside from '@/components/content/Aside';
+import Icons from '@/components/Icons';
+import Comment from '@/components/content/Comment';
+import Footer from '@/components/content/Footer';
 import Header from '@/components/content/Header';
-import CloudinaryImg from '@/components/images/CloudinaryImage';
-import { LargeHeading } from '@/components/ui/LargeHeading';
-import getPosts from '@/lib/get-posts';
+import MainContent from '@/components/content/MainContent';
+import PostList from '@/components/posts-list/post';
+import { buttonVariants } from '@/components/ui/Button';
+import { headingVariants } from '@/components/ui/LargeHeading';
+import getPosts, { getRecommendations } from '@/lib/get-posts';
+import { Post } from '@/lib/types';
 import { Metadata } from 'next';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import React from 'react';
 
@@ -55,20 +61,13 @@ const layout = async ({
   };
 }) => {
   const post = await getData(params);
-  const { previous, next, title, lastModified, date, banner, description } = post;
+  const recommendations = (await getRecommendations(params?.slug)) as Post[];
 
   return (
     <div className="pt-20">
       <Header {...post} />
-      <section className="container max-w-7xl flex gap-4 pt-8 pb-24 justify-between">
-        <article className="mdx w-9/12 max-w-full prose prose-sm lg:prose-base prose-slate dark:!prose-invert">
-          {children}
-        </article>
-
-        <aside className="sticky w-3/12 top-24 h-fit">
-          <Aside />
-        </aside>
-      </section>
+      <MainContent>{children}</MainContent>
+      <Footer recommendations={recommendations} />
     </div>
   );
 };

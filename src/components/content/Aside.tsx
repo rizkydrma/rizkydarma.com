@@ -25,11 +25,7 @@ const Aside: FC<AsideProps> = () => {
 
     setToc(headingArr);
   }, []);
-  return (
-    <div className="">
-      <TableOfContents toc={toc} minLevel={minLevel} activeSection={activeSection} />
-    </div>
-  );
+  return <TableOfContents toc={toc} minLevel={minLevel} activeSection={activeSection} />;
 };
 
 export default Aside;

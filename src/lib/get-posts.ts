@@ -32,4 +32,15 @@ export async function getPost(slug: string) {
   return posts.find((post) => post?.slug === slug);
 }
 
+export async function getRecommendations(currSlug: string) {
+  const posts = await getPosts();
+
+  const currPost = posts?.find((post) => post?.slug === currSlug);
+  const otherPosts = posts
+    ?.filter((post) => post?.slug !== currPost?.slug)
+    .filter((post) => post?.tags.split(',').some((p) => currPost?.tags?.split(',').includes(p)));
+
+  return otherPosts?.slice(0, 3);
+}
+
 export default getPosts;

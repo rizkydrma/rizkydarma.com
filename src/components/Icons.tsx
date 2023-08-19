@@ -6,6 +6,8 @@ import {
   LinkedinIcon,
   FileTextIcon,
   CheckIcon,
+  MoveLeftIcon,
+  MoveRightIcon,
 } from 'lucide-react';
 
 export const Icons = {
@@ -16,6 +18,8 @@ export const Icons = {
   LinkedinIcon,
   FileTextIcon,
   CheckIcon,
+  MoveLeftIcon,
+  MoveRightIcon,
 };
 
 export default Icons;
