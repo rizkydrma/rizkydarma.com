@@ -67,7 +67,7 @@ const layout = async ({
     <div className="pt-20">
       <Header {...post} />
       <MainContent>{children}</MainContent>
-      <Footer recommendations={recommendations} />
+      <Footer post={post} recommendations={recommendations} />
     </div>
   );
 };

@@ -9,12 +9,14 @@ import Link from 'next/link';
 import Icons from '@/components/Icons';
 import { motion } from 'framer-motion';
 import { slideUp } from './anim';
+import ShareButton from '../links/ShareButton';
 
 interface FooterProps {
+  post: Post;
   recommendations: Post[];
 }
 
-const Footer: FC<FooterProps> = ({ recommendations }) => {
+const Footer: FC<FooterProps> = ({ post, recommendations }) => {
   return (
     <motion.footer
       custom={4}
@@ -23,6 +25,7 @@ const Footer: FC<FooterProps> = ({ recommendations }) => {
       variants={slideUp}
       className="container max-w-7xl mt-4 lg:mt-12"
     >
+      <ShareButton post={post} url={`https://rizkydarma.com/blog/${post?.slug}`} />
       <Comment />
       <PostList posts={recommendations} className="lg:my-12 my-4">
         {recommendations?.length && (
