@@ -22,7 +22,7 @@ const Header: FC<HeaderProps> = ({ banner, title, description, publishedAt, tags
   return (
     <header className="relative max-h-[600px] lg:max-h-[400px] overflow-hidden">
       <CloudinaryImg
-        publicId={`/banner/${banner}`}
+        publicId={banner as string}
         alt={`Photo from unsplash: ${banner}`}
         className={cn(
           'object-cover bg-cover w-full before:absolute before:inset-0 before:z-10 before:bg-gradient-to-b',

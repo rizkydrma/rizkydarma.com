@@ -1,0 +1,109 @@
+---
+title: 'Find Medical Vaccine'
+slug: 'find-medical-vaccine'
+publishedAt: '2023-08-20'
+description: 'I created the "Find Medical Vaccine" project using Next.js 13 with TypeScript and leaflet'
+banner: '/projects/medical-vaccine/diyxlhdz52pj8jjnkg5a'
+tags: 'nextjs,tailwind,leaflet'
+---
+
+## Why I create this project?
+
+Initially, at my workplace, I was asked to access user geolocation. Users were expected to accurately determine the desired location point and then send that information to the database. For this task, I decided to use an open-source library, namely Leaflet. After successfully completing this challenge, my curiosity grew even stronger to delve deeper into learning about this library.
+
+Finally, I came up with an idea to create an interface similar to Google Maps. In this interface, users can click on markers on the map, just like on Google Maps, and detailed information about the marker will be displayed. Furthermore, users can also obtain directions from their current location to the selected marker. To bring this idea to life, I found that a mapping API related to vaccination clinics (puskesmas) was a perfect fit. Consequently, I decided to directly implement it using the Next.js framework version 13.
+
+## Project Goals
+
+1. Able to search for medical facilities based on the city in indonesia.
+2. Mapping each medical facility based on latitude and longitude.
+3. Clustering markers if they are located close to each other.
+4. Detailed information about medical facilities appears in both pop-up and sidebar.
+5. Enabling users to receive directions from their current location to the intended medical facility.
+6. Displaying the route to be taken along with estimated travel time to reach the destination.
+
+## Tech Stack Used
+
+I created the "Find Medical Vaccine" project using Next.js 13 with TypeScript. For styling, I utilized Tailwind CSS, and for the interactive map, I used the Leaflet library. Since this project isn't very large in scope, I opted to use React Context to manage its state.
+
+## The Problem and How I Solved It
+
+The challenge I encountered while working on this project was the limited documentation available, mainly due to the prevalence of other libraries like Mapbox and the Google Maps API. I opted for React-Leaflet version 4 and needed the documentation about routing machine , but most online resources provided documentation for version 3. However, in the end, I found clear documentation for the Leaflet routing machine on this website: **[https://www.liedman.net/leaflet-routing-machine/api/](https://www.liedman.net/leaflet-routing-machine/api/)**. With access to comprehensive documentation, I was able to successfully complete the project.
+
+## Screenshots
+
+<SplitImage>
+  <Split>
+    <CloudinaryImg
+      mdx
+      className="!mb-0"
+      publicId="projects/medical-vaccine/diyxlhdz52pj8jjnkg5a"
+      alt="landing-page"
+      width={800}
+      height={426}
+    />
+  </Split>
+  <Split>
+    <CloudinaryImg
+      mdx
+      className="!mb-0"
+      publicId="projects/medical-vaccine/dyf9ps4hembkjkofsuxt"
+      alt="landing-page"
+      width={800}
+      height={426}
+    />
+  </Split>
+  <Split>
+    <CloudinaryImg
+      mdx
+      className="!mb-0"
+      publicId="projects/medical-vaccine/kgfr5ddkyjctt48u1dxy"
+      alt="landing-page"
+      width={800}
+      height={426}
+    />
+  </Split>
+  <Split>
+    <CloudinaryImg
+      mdx
+      className="!mb-0"
+      publicId="projects/medical-vaccine/fuc7ys7o5tqh7sqdrbt0"
+      alt="landing-page"
+      width={800}
+      height={426}
+    />
+  </Split>
+  <Split>
+    <CloudinaryImg
+      mdx
+      className="!mb-0"
+      publicId="projects/medical-vaccine/oahfrczp2x8lg5mv82g6"
+      alt="landing-page"
+      width={800}
+      height={426}
+    />
+  </Split>
+  <Split>
+    <CloudinaryImg
+      mdx
+      className="!mb-0"
+      publicId="projects/medical-vaccine/wd5nf4ov1ghhstbuqrtq"
+      alt="landing-page"
+      width={800}
+      height={426}
+    />
+  </Split>
+</SplitImage>
+
+## Tutorial
+
+Coming soon
+
+## Resource
+
+- [https://leaflet-extras.github.io/leaflet-providers/](https://leaflet-extras.github.io/leaflet-providers/)
+- [https://leafletjs.com/reference.html](https://leafletjs.com/reference.html)
+- [https://react-leaflet.js.org/docs/start-introduction/](https://react-leaflet.js.org/docs/start-introduction/)
+- [https://www.liedman.net/leaflet-routing-machine/api/](https://www.liedman.net/leaflet-routing-machine/api/)
+- [https://nominatim.org/release-docs/develop/api/Reverse/](https://nominatim.org/release-docs/develop/api/Reverse/)
+- [https://covid19.go.id/dokumentasi-api-faskes-vaksinasi](https://covid19.go.id/dokumentasi-api-faskes-vaksinasi)/

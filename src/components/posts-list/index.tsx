@@ -8,16 +8,12 @@ import { Button } from '../ui/Button';
 import Highlight from '../ui/Highlight';
 import { headingVariants } from '../ui/LargeHeading';
 import { paragraphVariants } from '../ui/Paragraph';
+import { slideUp } from '@/common/slideup';
 
 interface PostListProps {
   posts: Post[];
   paginate?: boolean;
 }
-
-const slideUp = {
-  hidden: { opacity: 0, y: 10 },
-  visible: (i: number) => ({ opacity: 1, y: 0, transition: { duration: 0.3, delay: 1 * i } }),
-};
 
 const PostList: FC<PostListProps> = ({ posts, paginate }) => {
   const [showMore, setShowMore] = useState(6);
@@ -72,7 +68,7 @@ const PostList: FC<PostListProps> = ({ posts, paginate }) => {
               custom={clicked || search ? index * 0.1 : 2.5 + index * 0.2}
               key={post?.slug + index}
             >
-              <BlogCard post={post} />
+              <BlogCard post={post} url={`/blog/${post?.slug}`} urlImage={post?.banner as string} />
             </motion.li>
           ))}
         </ul>

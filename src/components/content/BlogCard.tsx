@@ -7,17 +7,19 @@ import Badge from '../badge';
 
 interface BlogCardProps {
   post: Post;
+  url: string;
+  urlImage: string;
 }
 
-const BlogCard: FC<BlogCardProps> = ({ post }) => {
+const BlogCard: FC<BlogCardProps> = ({ post, url, urlImage }) => {
   return (
-    <UnstyledLink href={`/blog/${post?.slug}`} className="group">
+    <UnstyledLink href={url} className="group">
       <div className="bg-white dark:bg-stone-900 rounded-lg h-full shadow-md dark:shadow-stone-900  overflow-hidden">
         <div className="relative">
           <CloudinaryImg
             noStyle
             className="pointer-events-none overflow-hidden rounded-t-lg group-hover:scale-105 transition duration-200"
-            publicId={`/banner/${post?.banner}`}
+            publicId={urlImage}
             alt="Photo taken from unsplash"
             width={1200}
             height={(1200 * 2) / 5}

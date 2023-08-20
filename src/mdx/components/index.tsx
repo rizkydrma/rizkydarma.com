@@ -3,6 +3,8 @@ import NextImage from 'next/image';
 import { Code } from 'bright';
 import { MDXImage } from './mdx-image';
 import { Tweet } from 'react-tweet';
+import CloudinaryImage from '@/components/images/CloudinaryImage';
+import SplitImage, { Split } from '@/components/content/SplitImage';
 
 export const mdxComponents: MDXComponents = {
   pre: ({ children, ...props }: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLPreElement>) => {
@@ -38,4 +40,7 @@ export const mdxComponents: MDXComponents = {
       <Tweet {...props} />
     </div>
   ),
+  CloudinaryImg: CloudinaryImage,
+  Split: Split,
+  SplitImage: SplitImage,
 };

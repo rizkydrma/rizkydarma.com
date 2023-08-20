@@ -7,7 +7,7 @@ interface NavbarProps {}
 
 let tabs = [
   { id: 'home', label: 'Home', href: '/' },
-  { id: 'projects', label: 'Projects', href: '/projects' },
+  { id: 'projects', label: 'Projects', href: '/project' },
   { id: 'about', label: 'About', href: '/about' },
   { id: 'blog', label: '✨ Blog', href: '/blog' },
 ];

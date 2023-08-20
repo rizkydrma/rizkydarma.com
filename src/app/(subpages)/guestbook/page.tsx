@@ -8,7 +8,7 @@ import { slideUp } from '@/common/slideup';
 
 const Guestbook = () => {
   return (
-    <div className="container max-w-7xl mx-auto pt-40 min-h-[90vh]">
+    <section className="container max-w-7xl mx-auto pt-40 min-h-[90vh]">
       <motion.h1
         custom={1}
         animate="visible"
@@ -32,7 +32,7 @@ const Guestbook = () => {
       <motion.div className="mt-4" custom={3} animate="visible" initial="hidden" variants={slideUp}>
         <Comment />
       </motion.div>
-    </div>
+    </section>
   );
 };
 

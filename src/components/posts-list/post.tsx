@@ -29,7 +29,7 @@ const PostList = ({ children, posts, className }: PostListProps) => {
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-4 gap-8">
         {posts?.map((post, index) => (
           <li key={post?.slug + index}>
-            <BlogCard post={post} />
+            <BlogCard post={post} urlImage={post?.banner as string} url={`/blog/${post?.slug}`} />
           </li>
         ))}
       </ul>

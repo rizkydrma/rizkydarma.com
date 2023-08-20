@@ -8,7 +8,7 @@ export function MDXImage({
   alt: string;
 }) {
   let widthFromSrc, heightFromSrc;
-  const url = new URL(src, 'https://maxleiter.com');
+  const url = new URL(src, 'https://rizkydarma.com');
   const widthParam = url.searchParams.get('w') || url.searchParams.get('width');
   const heightParam = url.searchParams.get('h') || url.searchParams.get('height');
   if (widthParam) {
