@@ -4,11 +4,7 @@ import { motion } from 'framer-motion';
 import { headingVariants } from '@/components/ui/LargeHeading';
 import { paragraphVariants } from '@/components/ui/Paragraph';
 import Comment from '@/components/content/Comment';
-
-const slideUp = {
-  hidden: { opacity: 0, y: 10 },
-  visible: (i: number) => ({ opacity: 1, y: 0, transition: { duration: 0.3, delay: 1 * i } }),
-};
+import { slideUp } from '@/common/slideup';
 
 const Guestbook = () => {
   return (

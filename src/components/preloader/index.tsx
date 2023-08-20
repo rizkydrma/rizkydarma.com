@@ -1,8 +1,8 @@
 'use client';
-import { FC, useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import { opacity, slideUp } from './anim';
 import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
+import { FC, useEffect, useState } from 'react';
+import { opacity, slideUp } from './anim';
 
 interface PreloaderProps {}
 

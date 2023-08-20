@@ -1,95 +1,73 @@
 'use client';
-
-import { cn } from '@/lib/utils';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { FC, SetStateAction, useEffect, useRef } from 'react';
+import { FC } from 'react';
+import { headingVariants } from '../ui/LargeHeading';
+import CloudinaryImg from '../images/CloudinaryImage';
 import Highlight from '../ui/Highlight';
+import Link from 'next/link';
+import Techstack from './Techstack';
+import { motion } from 'framer-motion';
+import { slideUp } from '@/common/slideup';
 
-interface AboutProps {
-  setIsHovered: React.Dispatch<SetStateAction<boolean>>;
-  text: string;
-  masking?: boolean;
-}
+interface AboutProps {}
 
-const About: FC<AboutProps> = ({ setIsHovered, text, masking = false }) => {
-  const container = useRef(null);
-
-  const refs = useRef<any>([]);
-
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    createAnimation();
-  }, []);
-
-  const createAnimation = () => {
-    gsap.to(refs.current, {
-      scrollTrigger: {
-        trigger: container.current,
-        scrub: true,
-        start: `top center`,
-        end: `+=400`,
-      },
-      opacity: 1,
-      ease: 'none',
-      stagger: 0.1,
-    });
-  };
-
-  const splitWords = (text: string) => {
-    let body: any = [];
-    text.split(' ').forEach((word, i) => {
-      const letters = splitLetters(word);
-      body.push(
-        <p className="mr-2.5" key={word + '_' + i}>
-          {letters}
-        </p>,
-      );
-    });
-    return body;
-  };
-
-  const splitLetters = (word: string) => {
-    let letters: any = [];
-    word.split('').forEach((letter, i) => {
-      letters.push(
-        <span
-          className="opacity-20"
-          key={letter + '_' + i}
-          ref={(el: any) => {
-            refs.current.push(el);
-          }}
-        >
-          {letter}
-        </span>,
-      );
-    });
-    return letters;
-  };
-
+const About: FC<AboutProps> = ({}) => {
   return (
-    <section id="about" className="h-[80vh] lg:h-[100vh] text-stone-950 dark:text-stone-50" ref={container}>
-      <div className=" px-10 lg:px-32 2xl:px-60 pt-[20vh]">
-        <Highlight
-          className={cn('text-sm lg:text-lg font-mono uppercase', masking ? 'text-stone-50 dark:text-stone-950' : '')}
-        >
-          About Me
-        </Highlight>
-        <div
-          onMouseEnter={() => {
-            setIsHovered(true);
-          }}
-          onMouseLeave={() => {
-            setIsHovered(false);
-          }}
-          className={cn(
-            'text-2xl lg:text-6xl font-bold w-full flex flex-wrap',
-            masking ? 'text-stone-50 dark:text-stone-950' : '',
-          )}
-        >
-          {masking ? text : splitWords(text)}
-        </div>
-      </div>
+    <section className="container max-w-7xl mx-auto py-40 min-h-[90vh]">
+      <motion.h1 custom={1} animate="visible" initial="hidden" variants={slideUp} className={headingVariants({})}>
+        About Me
+      </motion.h1>
+      <motion.div custom={1.8} animate="visible" initial="hidden" variants={slideUp} className="mt-8">
+        <CloudinaryImg
+          className="float-right ml-6 w-40 md:w-72"
+          publicId="profile/lpme8twv6v7xfaqaerq2"
+          width="1500"
+          height="1800"
+          alt="Photo of me"
+          preview={false}
+        />
+
+        <article className="max-w-full prose-sm prose lg:prose-base prose-slate dark:!prose-invert">
+          <p>
+            Hello there! My name is <Highlight className="font-bold">Rizky Darma</Highlight>. I have a tremendous
+            enthusiasm for the world of development. My learning journey began during my time in high school and
+            continued into university. However, it was during the final semester of my college years, around 2020, that
+            I truly deepened my knowledge and skills in development. Since then, I`ve been actively engaging with
+            tutorials, courses, and bootcamps related to development. <Link href="#">You can check my resume</Link>
+          </p>
+          <p>
+            I even secured a professional position in 2022 as a{' '}
+            <Highlight className="font-bold">Frontend Developer</Highlight>, which means I`ve been immersed in the
+            technology industry for over a year and a half. I`ve absorbed a wealth of knowledge about frontend and the
+            development realm, and to this day, my thirst for learning remains insatiable. I`m incredibly hungry for
+            knowledge and addicted to continuous learning.
+          </p>
+
+          <p>
+            In August 2023, I created this website with the goal of sharing what I`ve learned. Additionally, this
+            platform serves as a showcase for the projects I`ve worked on. I also aim to leverage this space to helps
+            others through the content I create, be it in the form of written articles or videos.
+          </p>
+
+          <p>
+            If you`re interested in having a discussion, please feel free to reach out to me through my social media
+            accounts. I`m always thrilled when someone wants to talk about projects, work, or anything else. I believe
+            that collaboration is a key to success in the development world, and I`m always open to sharing ideas and
+            experiences.
+          </p>
+
+          <p>
+            Thank you for visiting my website and taking the time to learn more about me.{' '}
+            <Highlight className="font-bold">Let`s collaborate</Highlight>,{' '}
+            <Highlight className="font-bold">learn together</Highlight>, and create a better digital world!
+          </p>
+        </article>
+      </motion.div>
+
+      <motion.div custom={2.5} animate="visible" initial="hidden" variants={slideUp} className="mt-8">
+        <h1 className={headingVariants({ size: 'xs' })}>Current Favorite Tech Stack</h1>
+
+        <Techstack />
+      </motion.div>
     </section>
   );
 };

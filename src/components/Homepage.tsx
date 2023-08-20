@@ -1,6 +1,5 @@
 'use client';
 import Globe from '@/components/Globe';
-import About from '@/components/about';
 import Experiences from '@/components/experiences';
 import Landing from '@/components/landing';
 import ContentLanding from '@/components/landing/ContentLanding';
@@ -8,15 +7,18 @@ import ContentLandingMask from '@/components/landing/ContentLandingMask';
 import Preloader from '@/components/preloader';
 import Projects from '@/components/projects';
 import useMousePosition from '@/hook/useMousePosition';
+import { Post } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { AnimatePresence, motion } from 'framer-motion';
 import { FC, useEffect, useState } from 'react';
+import FeaturedPost from './landing/FeaturedPost';
+import AboutLanding from './landing/AboutLanding';
 
 interface HomeInterface {
-  FeaturedPost: React.ReactNode;
+  posts: Post[];
 }
 
-const Home: FC<HomeInterface> = ({ FeaturedPost }) => {
+const Home: FC<HomeInterface> = ({ posts }) => {
   const [loading, setLoading] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
   const {
@@ -52,27 +54,27 @@ const Home: FC<HomeInterface> = ({ FeaturedPost }) => {
         transition={{ type: 'tween', ease: 'backOut', duration: 0.5 }}
       >
         <Landing isHovered={isHovered} setIsHovered={setIsHovered} content={<ContentLandingMask />} />
-        <About
+        <AboutLanding
           setIsHovered={setIsHovered}
           masking
           text="My code dances to the beat of its own drum, swaying gracefully between reality and imagination.I conjure
           interactive spells and lead them on magical journeys."
         />
         <Projects />
-        {FeaturedPost}
+        <FeaturedPost posts={posts} />
         <Experiences />
       </motion.main>
 
       <AnimatePresence mode="wait">{loading && <Preloader />}</AnimatePresence>
       <Landing isHovered={isHovered} setIsHovered={setIsHovered} content={<ContentLanding />} />
       <Globe />
-      <About
+      <AboutLanding
         setIsHovered={setIsHovered}
         text="In the world of frontend development, I`m not just a developer; I`m a mad scientist of pixels, a dreamweaver
           of interfaces, and a conductor of digital symphonies."
       />
       <Projects />
-      {FeaturedPost}
+      <FeaturedPost posts={posts} />
       <Experiences />
     </>
   );

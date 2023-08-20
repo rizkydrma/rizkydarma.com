@@ -7,8 +7,7 @@ import { useEffect, useRef, useState } from 'react';
 import { buttonVariants } from '../ui/Button';
 import Highlight from '../ui/Highlight';
 import Project from './components/Project';
-
-type TLogoKey = 'tailwind' | 'leaflet' | 'nextjs' | 'react' | 'sass';
+import { TLogoKey } from '@/lib/image';
 
 export interface ITechProject {
   name: string;

@@ -15,7 +15,7 @@ const Highlight: FC<HighlightProps> = ({ children, className, delay = 0 }) => {
   const isInView = useInView(ref, { once: true });
 
   return (
-    <h1 ref={ref} className={clsx('relative w-full inline z-20', className)}>
+    <span ref={ref} className={clsx('relative w-full inline z-20', className)}>
       {children}
       <motion.span
         className="absolute w-[calc(100%+4px)] h-[60%] -left-1 -z-10 bg-gradient-to-r from-yellow-400 to-yellow-200/50 dark:from-indigo-600 dark:to-indigo-400/50 bottom-0"
@@ -30,7 +30,7 @@ const Highlight: FC<HighlightProps> = ({ children, className, delay = 0 }) => {
           duration: 0.5,
         }}
       ></motion.span>
-    </h1>
+    </span>
   );
 };
 

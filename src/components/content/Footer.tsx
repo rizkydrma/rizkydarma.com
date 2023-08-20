@@ -8,8 +8,8 @@ import { buttonVariants } from '@/components/ui/Button';
 import Link from 'next/link';
 import Icons from '@/components/Icons';
 import { motion } from 'framer-motion';
-import { slideUp } from './anim';
 import ShareButton from '../links/ShareButton';
+import { slideUp } from '@/common/slideup';
 
 interface FooterProps {
   post: Post;

@@ -1,8 +1,8 @@
 'use client';
+import { slideUp } from '@/common/slideup';
 import Aside from '@/components/content/Aside';
 import { motion } from 'framer-motion';
 import { FC, PropsWithChildren } from 'react';
-import { slideUp } from './anim';
 
 const MainContent: FC<PropsWithChildren> = ({ children }) => {
   return (

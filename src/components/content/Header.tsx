@@ -9,7 +9,7 @@ import Badge from '../badge';
 import CloudinaryImg from '../images/CloudinaryImage';
 import { headingVariants } from '../ui/LargeHeading';
 import { paragraphVariants } from '../ui/Paragraph';
-import { slideUp } from './anim';
+import { slideUp } from '@/common/slideup';
 
 interface HeaderProps extends Post {}
 

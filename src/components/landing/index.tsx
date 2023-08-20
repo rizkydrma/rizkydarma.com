@@ -1,8 +1,6 @@
 'use client';
 import { cn } from '@/lib/utils';
-import { motion } from 'framer-motion';
-import { FC, ReactNode, SetStateAction, useRef } from 'react';
-import { slideUp } from './anim';
+import { FC, ReactNode, SetStateAction } from 'react';
 
 interface LandingProps {
   setIsHovered: React.Dispatch<SetStateAction<boolean>>;

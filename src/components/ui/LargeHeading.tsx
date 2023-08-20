@@ -9,6 +9,7 @@ const headingVariants = cva('text-stone-950 dark:text-stone-50 lg:text-left font
       default: 'text-3xl md:text-4xl lg:text-4xl',
       lg: 'text-4xl md:text-5xl lg:text-5xl',
       sm: 'text-2xl md:text-2xl lg:text-3xl',
+      xs: 'text-base md:text-lg lg:text-xl',
     },
   },
   defaultVariants: {
