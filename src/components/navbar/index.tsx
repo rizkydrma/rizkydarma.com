@@ -14,7 +14,7 @@ let tabs = [
 
 const Navbar: FC<NavbarProps> = ({}) => {
   return (
-    <div className="fixed backdrop-blur-sm z-[9999] top-0 left-0 right-0 h-20 border-b border-stone-200 bg-stone-50 dark:border-stone-700 dark:bg-stone-950 shadow-sm dark:shadow-stone-900 flex items-center ">
+    <div className="fixed backdrop-blur-sm z-[999] top-0 left-0 right-0 h-20 border-b border-stone-200 bg-stone-50 dark:border-stone-700 dark:bg-stone-950 shadow-sm dark:shadow-stone-900 flex items-center ">
       <div className="z-[9999] container max-w-7xl mx-auto w-full items-center justify-between flex">
         <div className="flex space-x-1">
           {tabs?.map((tab) => (

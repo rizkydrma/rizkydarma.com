@@ -3,6 +3,8 @@ import { buildUrl } from 'cloudinary-build-url';
 import clsx from 'clsx';
 import Image from 'next/image';
 import * as React from 'react';
+import Lightbox from 'react-18-image-lightbox';
+import 'react-18-image-lightbox/style.css';
 
 type CloudinaryImgType = {
   publicId: string;
@@ -34,6 +36,8 @@ export default function CloudinaryImg({
   aspect,
   ...rest
 }: CloudinaryImgType) {
+  const [isOpen, setIsOpen] = React.useState(false);
+
   const urlBlurred = buildUrl(publicId, {
     cloud: {
       cloudName: 'de3n7a1r0',
@@ -80,6 +84,7 @@ export default function CloudinaryImg({
           cursor: preview ? 'zoom-in' : 'default',
         }}
         className="img-blur"
+        onClick={preview ? () => setIsOpen(true) : undefined}
       >
         <style jsx>{`
           .img-blur::before {
@@ -103,6 +108,7 @@ export default function CloudinaryImg({
           />
         </div>
       </div>
+      {isOpen && <Lightbox mainSrc={url} onCloseRequest={() => setIsOpen(false)} />}
     </figure>
   );
 }

@@ -1,3 +1,4 @@
+'use client';
 import { FC } from 'react';
 import { FacebookShareButton, TwitterShareButton, LinkedinShareButton } from 'react-share';
 import { FacebookIcon, TwitterIcon, LinkedinIcon } from 'react-share';
