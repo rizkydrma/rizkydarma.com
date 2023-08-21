@@ -1,0 +1,123 @@
+---
+title: '4 Way to center element'
+slug: '4-way-to-center-element'
+publishedAt: '2023-08-21'
+description: 'In the ever-evolving realm of web design, arranging elements to be at the center of the screen is an essential skill for developers.'
+banner: '/blogs/4-ways-to-center-element/mntqsfniwn7sresejzqk'
+tags: 'css'
+---
+
+# Introduction
+
+In the ever-evolving realm of web design, arranging elements to be at the center of the screen is an essential skill for developers. In this article, we will delve into four detailed, elegant, and formal approaches to achieve this, utilizing CSS as the primary tool.
+
+## 1. Using Flex
+
+One highly flexible method is utilizing the **`display: flex`** property. This approach enables precise and consistent layout control.
+
+```css
+.centered {
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+```
+
+In the aforementioned example, the element marked with the class "container" will be both horizontally and vertically centered within its containing element. The **`justify-content: center`** property addresses horizontal alignment, while **`align-items: center`** governs vertical alignment.
+
+**Example**
+
+<CloudinaryImg
+  mdx
+  className="!mb-0"
+  publicId="/blogs/4-ways-to-center-element/iuolhwvnnafl3fd2wvy5"
+  alt="landing-page"
+  width={800}
+  height={426}
+/>
+
+## 2. Using Grid - Place Items Center
+
+The CSS Grid layout system offers simplicity in efficiently and dynamically centering elements.
+
+```css
+.centered {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+```
+
+In this illustration, elements using the "container" class will be centered on the screen, facilitated by the **`place-items: center`** property.
+
+**Example**
+
+<CloudinaryImg
+  mdx
+  className="!mb-0"
+  publicId="/blogs/4-ways-to-center-element/nrajceqhwce7xtgynn3o"
+  alt="landing-page"
+  width={800}
+  height={426}
+/>
+
+## 3. Using Grid Align & Content Center
+
+In Grid Layout, you can indeed use the **`align-items`** and **`justify-content`** properties to center elements within a container both vertically and horizontally, much like you can do in Flexbox.
+
+Here's an example of using Grid Layout with **`align-items`** and **`justify-content`** to center child elements within a container:
+
+```css
+.centered {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+}
+```
+
+In this example, the child elements within the **`.container`** will be centered both vertically and horizontally within the container. The **`align-items: center`** property will vertically center the elements, while **`justify-content: center`** will horizontally center them.
+
+**Example**
+
+<CloudinaryImg
+  mdx
+  className="!mb-0"
+  publicId="/blogs/4-ways-to-center-element/cliuda4zieq1dq0cxjog"
+  alt="landing-page"
+  width={800}
+  height={426}
+/>
+
+## 4. Using Position Absolute
+
+For an elegant touch, the approach of using the **`position: absolute`** property along with CSS transformations proves highly effective.
+
+```css
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+```
+
+Through the example above, the element tagged as "centered" will be precisely positioned at the center of its containing element. The **`top`**, **`left`**, and **`transform`** properties play pivotal roles in achieving this alignment.
+
+**Example**
+
+<CloudinaryImg
+  mdx
+  className="!mb-0"
+  publicId="/blogs/4-ways-to-center-element/aocmodp0dvtvjqja1x0v"
+  alt="landing-page"
+  width={800}
+  height={426}
+/>
+
+## **In Conclusion**
+
+CSS provides a versatile toolkit for centering elements, offering a variety of effective approaches. By selecting and mastering one of the four methods outlined above, you will empower yourself to create balanced, polished, and professional designs in your web development endeavors.
