@@ -1,24 +1,52 @@
 'use client';
 import { useWindowSize } from '@/hook/useCurrentDimension';
-import { Post } from '@/lib/types';
+import { Post, Views } from '@/lib/types';
 import { cn, formatDate } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import Badge from '../badge';
 import CloudinaryImg from '../images/CloudinaryImage';
 import { headingVariants } from '../ui/LargeHeading';
 import { paragraphVariants } from '../ui/Paragraph';
 import { slideUp } from '@/common/slideup';
+import useSWR from 'swr';
+import { fetcher } from '@/lib/fetcher';
+import Icons from '../Icons';
 
-interface HeaderProps extends Post {}
+interface HeaderProps extends Post {
+  shouldRegisterView?: boolean;
+}
 
-const Header: FC<HeaderProps> = ({ banner, title, description, publishedAt, tags }) => {
+const Header: FC<HeaderProps> = ({
+  banner,
+  title,
+  description,
+  publishedAt,
+  tags,
+  slug,
+  shouldRegisterView = false,
+}) => {
+  const { data, error } = useSWR<Views>(`/api/views/${slug}`, fetcher);
   const { width } = useWindowSize();
 
   const heightImage = width < 640 ? width : (width * 2) / 6;
   const aspectRatio = width < 640 ? { height: 1, width: 1 } : { height: 2, width: 6 };
 
+  useEffect(() => {
+    if (!shouldRegisterView) {
+      return;
+    }
+    const registerView = () => {
+      fetch(`/api/views/${slug}`, {
+        method: 'POST',
+      });
+    };
+
+    window.scrollTo(0, 0);
+
+    registerView();
+  }, [shouldRegisterView, slug]);
   return (
     <header className="relative max-h-[600px] lg:max-h-[400px] overflow-hidden">
       <CloudinaryImg
@@ -82,13 +110,26 @@ const Header: FC<HeaderProps> = ({ banner, title, description, publishedAt, tags
             animate="visible"
             initial="hidden"
             variants={slideUp}
-            className="col-span-6 lg:col-span-7 flex flex-col gap-2 h-full justify-center"
+            className="col-span-6 lg:col-span-2 flex flex-col gap-2 h-full justify-center"
           >
             <p className="text-xs">Published on</p>
             <div className="text-xs">{formatDate(publishedAt)}</div>
           </motion.div>
           <motion.div
             custom={2.4}
+            animate="visible"
+            initial="hidden"
+            variants={slideUp}
+            className="col-span-6 lg:col-span-5 flex flex-col gap-2 h-full justify-center"
+          >
+            <p className="text-xs">Views</p>
+            <div className="text-xs">
+              <Icons.EyeIcon size={18} className="inline-flex mr-2" />
+              {data?.count}
+            </div>
+          </motion.div>
+          <motion.div
+            custom={2.6}
             animate="visible"
             initial="hidden"
             variants={slideUp}

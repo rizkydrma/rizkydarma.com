@@ -4,6 +4,7 @@ import CloudinaryImg from '../images/CloudinaryImage';
 import UnstyledLink from '../links/UnstyledLink';
 import { formatDate } from '@/lib/utils';
 import Badge from '../badge';
+import Icons from '../Icons';
 
 interface BlogCardProps {
   post: Post;
@@ -38,7 +39,14 @@ const BlogCard: FC<BlogCardProps> = ({ post, url, urlImage }) => {
 
         <div className="p-4">
           <h1 className="text-md font-medium mt-2">{post?.title}</h1>
-          <p className="text-xs text-stone-500 mt-4">{formatDate(post?.publishedAt)}</p>
+
+          <div className="flex items-center gap-4">
+            <p className="text-xs text-stone-500 mt-4">{formatDate(post?.publishedAt)}</p>
+            <p className="text-xs text-stone-500 mt-4">
+              <Icons.EyeIcon size={16} className="inline-flex mr-1 items-center" />
+              {post?.count} views
+            </p>
+          </div>
           <p className="text-sm text-stone-700 dark:text-stone-300 mt-2">{post?.description}</p>
         </div>
       </div>

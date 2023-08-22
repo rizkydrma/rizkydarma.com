@@ -1,3 +1,4 @@
+import ViewCounter from '@/components/Counter';
 import Footer from '@/components/content/Footer';
 import Header from '@/components/content/Header';
 import MainContent from '@/components/content/MainContent';
@@ -59,7 +60,7 @@ const layout = async ({
 
   return (
     <div className="pt-20">
-      <Header {...post} />
+      <Header {...post} shouldRegisterView={true} />
       <MainContent>{children}</MainContent>
       <Footer post={post} recommendations={recommendations} url={`https://rizkydarma.com/blog/${post?.slug}`} />
     </div>

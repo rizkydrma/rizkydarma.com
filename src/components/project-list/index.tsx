@@ -1,11 +1,13 @@
 'use client';
-import { Post } from '@/lib/types';
+import { Post, Views } from '@/lib/types';
 import { FC, useState } from 'react';
 import { motion } from 'framer-motion';
 import { slideUp } from '@/common/slideup';
 import { headingVariants } from '../ui/LargeHeading';
 import BlogCard from '../content/BlogCard';
 import { Button } from '../ui/Button';
+import { fetcher } from '@/lib/fetcher';
+import useSWR from 'swr';
 
 interface ProjectListProps {
   projects: Post[];
@@ -13,6 +15,28 @@ interface ProjectListProps {
 }
 
 const ProjectList: FC<ProjectListProps> = ({ projects, paginate }) => {
+  const { data, error } = useSWR<Views[]>('/api/views/all', fetcher);
+
+  const populateProjects = projects?.map((project) => {
+    if (!data) return project;
+
+    const find = data?.find((item) => item?.slug === project?.slug);
+
+    if (!find) return project;
+
+    if (find) {
+      return {
+        ...project,
+        count: find?.count,
+      };
+    }
+
+    return {
+      ...project,
+      count: 0,
+    };
+  });
+
   const [showMore, setShowMore] = useState(6);
   return (
     <section className="container max-w-7xl mx-auto pt-40 min-h-[90vh]">
@@ -28,7 +52,7 @@ const ProjectList: FC<ProjectListProps> = ({ projects, paginate }) => {
 
       <div className="mt-8">
         <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-4 gap-8">
-          {projects.slice(0, paginate ? showMore : undefined).map((post, index) => (
+          {populateProjects.slice(0, paginate ? showMore : undefined).map((post, index) => (
             <motion.li
               animate="visible"
               initial="hidden"
@@ -41,12 +65,12 @@ const ProjectList: FC<ProjectListProps> = ({ projects, paginate }) => {
           ))}
         </ul>
 
-        {paginate && showMore < projects.length && (
+        {paginate && showMore < populateProjects.length && (
           <motion.div
             animate="visible"
             initial="hidden"
             variants={slideUp}
-            custom={2 + projects.length * 0.2}
+            custom={2 + populateProjects.length * 0.2}
             className="flex items-center justify-center mt-6"
           >
             <Button onClick={() => setShowMore(showMore + 6)}>Show More</Button>

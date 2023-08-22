@@ -8,6 +8,7 @@ import {
   CheckIcon,
   MoveLeftIcon,
   MoveRightIcon,
+  EyeIcon,
 } from 'lucide-react';
 
 export const Icons = {
@@ -20,6 +21,7 @@ export const Icons = {
   CheckIcon,
   MoveLeftIcon,
   MoveRightIcon,
+  EyeIcon,
 };
 
 export default Icons;

@@ -2,7 +2,6 @@ import Footer from '@/components/content/Footer';
 import Header from '@/components/content/Header';
 import MainContent from '@/components/content/MainContent';
 import { getProjects } from '@/lib/get-projects';
-import { Post } from '@/lib/types';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import React from 'react';
@@ -60,7 +59,7 @@ const layout = async ({
 
   return (
     <div className="pt-20">
-      <Header {...project} />
+      <Header {...project} shouldRegisterView={true} />
       <MainContent>{children}</MainContent>
       <Footer
         post={project}

@@ -1,5 +1,5 @@
 'use client';
-import { Post } from '@/lib/types';
+import { Post, Views } from '@/lib/types';
 import { motion } from 'framer-motion';
 import { ChangeEvent, FC, useEffect, useState } from 'react';
 import BlogCard from '../content/BlogCard';
@@ -9,6 +9,8 @@ import Highlight from '../ui/Highlight';
 import { headingVariants } from '../ui/LargeHeading';
 import { paragraphVariants } from '../ui/Paragraph';
 import { slideUp } from '@/common/slideup';
+import useSWR from 'swr';
+import { fetcher } from '@/lib/fetcher';
 
 interface PostListProps {
   posts: Post[];
@@ -16,17 +18,36 @@ interface PostListProps {
 }
 
 const PostList: FC<PostListProps> = ({ posts, paginate }) => {
+  const { data, error } = useSWR<Views[]>('/api/views/all', fetcher);
   const [showMore, setShowMore] = useState(6);
   const [clicked, setClicked] = useState(false);
   const [search, setSearch] = useState('');
-  const [filteredPosts, setFilteredPosts] = useState<Post[]>(posts);
+
+  const populatedPost = posts?.map((post) => {
+    if (!data) return post;
+    const find = data?.find((item) => item?.slug == post?.slug);
+
+    if (find) {
+      return {
+        ...post,
+        count: find?.count,
+      };
+    }
+
+    return {
+      ...post,
+      count: 0,
+    };
+  });
+
+  const [filteredPosts, setFilteredPosts] = useState<Post[]>(populatedPost);
 
   const onHandleSearch = (event: ChangeEvent<HTMLInputElement>) => {
     setSearch(event.currentTarget.value);
   };
 
   useEffect(() => {
-    const results = posts?.filter(
+    const results = populatedPost?.filter(
       (post) =>
         post?.title.toLowerCase().includes(search?.toLowerCase()) ||
         post?.description?.toLowerCase().includes(search?.toLowerCase()),
