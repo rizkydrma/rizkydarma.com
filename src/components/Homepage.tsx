@@ -7,18 +7,21 @@ import ContentLandingMask from '@/components/landing/ContentLandingMask';
 import Preloader from '@/components/preloader';
 import Projects from '@/components/projects';
 import useMousePosition from '@/hook/useMousePosition';
-import { Post } from '@/lib/types';
-import { cn } from '@/lib/utils';
+import { Post, Views } from '@/lib/types';
+import { cn, populatePost } from '@/lib/utils';
 import { AnimatePresence, motion } from 'framer-motion';
 import { FC, useEffect, useState } from 'react';
 import FeaturedPost from './landing/FeaturedPost';
 import AboutLanding from './landing/AboutLanding';
+import { fetcher } from '@/lib/fetcher';
+import useSWR from 'swr';
 
 interface HomeInterface {
   posts: Post[];
 }
 
 const Home: FC<HomeInterface> = ({ posts }) => {
+  const { data, error } = useSWR<Views[]>('/api/views/all', fetcher);
   const [loading, setLoading] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
   const {
@@ -26,6 +29,8 @@ const Home: FC<HomeInterface> = ({ posts }) => {
     scrollPosition,
   } = useMousePosition();
   const size = isHovered ? 300 : 40;
+
+  const populatedPost = populatePost(posts, data);
 
   useEffect(() => {
     (async () => {
@@ -61,7 +66,7 @@ const Home: FC<HomeInterface> = ({ posts }) => {
           interactive spells and lead them on magical journeys."
         />
         <Projects />
-        <FeaturedPost posts={posts} />
+        <FeaturedPost posts={populatedPost} />
         <Experiences />
       </motion.main>
 
@@ -74,7 +79,7 @@ const Home: FC<HomeInterface> = ({ posts }) => {
           of interfaces, and a conductor of digital symphonies."
       />
       <Projects />
-      <FeaturedPost posts={posts} />
+      <FeaturedPost posts={populatedPost} />
       <Experiences />
     </>
   );

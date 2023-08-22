@@ -8,6 +8,7 @@ import BlogCard from '../content/BlogCard';
 import { Button } from '../ui/Button';
 import { fetcher } from '@/lib/fetcher';
 import useSWR from 'swr';
+import { populatePost } from '@/lib/utils';
 
 interface ProjectListProps {
   projects: Post[];
@@ -16,26 +17,7 @@ interface ProjectListProps {
 
 const ProjectList: FC<ProjectListProps> = ({ projects, paginate }) => {
   const { data, error } = useSWR<Views[]>('/api/views/all', fetcher);
-
-  const populateProjects = projects?.map((project) => {
-    if (!data) return project;
-
-    const find = data?.find((item) => item?.slug === project?.slug);
-
-    if (!find) return project;
-
-    if (find) {
-      return {
-        ...project,
-        count: find?.count,
-      };
-    }
-
-    return {
-      ...project,
-      count: 0,
-    };
-  });
+  const populateProjects = populatePost(projects, data);
 
   const [showMore, setShowMore] = useState(6);
   return (

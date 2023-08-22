@@ -11,6 +11,7 @@ import { paragraphVariants } from '../ui/Paragraph';
 import { slideUp } from '@/common/slideup';
 import useSWR from 'swr';
 import { fetcher } from '@/lib/fetcher';
+import { populatePost } from '@/lib/utils';
 
 interface PostListProps {
   posts: Post[];
@@ -23,22 +24,7 @@ const PostList: FC<PostListProps> = ({ posts, paginate }) => {
   const [clicked, setClicked] = useState(false);
   const [search, setSearch] = useState('');
 
-  const populatedPost = posts?.map((post) => {
-    if (!data) return post;
-    const find = data?.find((item) => item?.slug == post?.slug);
-
-    if (find) {
-      return {
-        ...post,
-        count: find?.count,
-      };
-    }
-
-    return {
-      ...post,
-      count: 0,
-    };
-  });
+  const populatedPost = populatePost(posts, data);
 
   const [filteredPosts, setFilteredPosts] = useState<Post[]>(populatedPost);
 
@@ -54,6 +40,7 @@ const PostList: FC<PostListProps> = ({ posts, paginate }) => {
     );
 
     setFilteredPosts(results);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [posts, search]);
 
   return (

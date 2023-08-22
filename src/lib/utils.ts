@@ -1,6 +1,7 @@
 import { ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import moment from 'moment';
+import { Post, Views } from './types';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -42,4 +43,24 @@ export function formatDate(date: string, format?: string) {
   format = 'MMMM DD, YYYY';
 
   return moment(date).format(format);
+}
+
+export function populatePost(posts: Post[], views: Views[] | undefined) {
+  if (!views) return posts;
+
+  const populatedPost = posts?.map((post) => {
+    const find = views?.find((item) => item?.slug == post?.slug);
+    if (find) {
+      return {
+        ...post,
+        count: find?.count,
+      };
+    }
+    return {
+      ...post,
+      count: 0,
+    };
+  });
+
+  return populatedPost;
 }
