@@ -9,6 +9,7 @@ import {
   MoveLeftIcon,
   MoveRightIcon,
   EyeIcon,
+  ChevronLeft,
 } from 'lucide-react';
 
 export const Icons = {
@@ -22,6 +23,7 @@ export const Icons = {
   MoveLeftIcon,
   MoveRightIcon,
   EyeIcon,
+  ChevronLeft,
 };
 
 export default Icons;
