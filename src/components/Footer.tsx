@@ -26,22 +26,18 @@ const Footer = () => {
         <h1 className="font-bold">Reach me out</h1>
         <div className="flex gap-2">
           {socials?.map((social) => (
-            <Tooltip key={social?.href} tooltip={social?.description}>
-              <Link key={social?.href} href={social?.href} className="p-2 transition-colors rounded-full">
-                {social?.icon}
-              </Link>
-            </Tooltip>
+            <Link key={social?.href} href={social?.href} className="p-2 transition-colors rounded-full">
+              {social?.icon}
+            </Link>
           ))}
         </div>
       </div>
 
       <div className="space-x-4 flex flex-wrap">
         {footerLinks?.map((footer) => (
-          <Tooltip key={footer?.text} tooltip={footer?.tooltip}>
-            <Link href={footer?.href} className="animated-underline inline-block">
-              {footer?.text}
-            </Link>
-          </Tooltip>
+          <Link key={footer?.href} href={footer?.href} className="animated-underline inline-block">
+            {footer?.text}
+          </Link>
         ))}
       </div>
     </div>
