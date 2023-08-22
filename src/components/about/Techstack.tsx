@@ -34,15 +34,13 @@ const Techstack: FC<TechstackProps> = ({}) => {
     <div className="flex items-center gap-2">
       {TechStacks.map((tech, index: number) => (
         <figure className="p-2" key={tech?.key}>
-          <Tooltip tooltip={tech?.name}>
-            <Image
-              src={IMAGES[tech?.key]}
-              width={index == 0 ? 25 : 35}
-              height={0}
-              alt="image"
-              className="h-auto dark:invert opacity-80 grayscale"
-            />
-          </Tooltip>
+          <Image
+            src={IMAGES[tech?.key]}
+            width={index == 0 ? 25 : 35}
+            height={0}
+            alt="image"
+            className="h-auto dark:invert opacity-80 grayscale"
+          />
         </figure>
       ))}
     </div>
