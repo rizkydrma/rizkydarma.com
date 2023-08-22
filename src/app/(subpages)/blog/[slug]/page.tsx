@@ -14,7 +14,7 @@ export default async function PostPage({
     slug: string;
   };
 }) {
-  const post = await getPost(params.slug);
+  const post = await getPost(params?.slug);
   if (!post) return notFound();
 
   return <PostBody>{post?.body}</PostBody>;

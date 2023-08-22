@@ -26,7 +26,7 @@ const Guestbook = () => {
         variants={slideUp}
         className={paragraphVariants({ className: 'relative z-20 mt-4 w-full' })}
       >
-        I invite you to leave a mark in this guest book, in the form of appreciation, questions or whatever :)
+        I invite you to leave a mark in this guest book, in the form of appreciation, questions or whatever :
       </motion.p>
 
       <motion.div className="mt-4" custom={3} animate="visible" initial="hidden" variants={slideUp}>
