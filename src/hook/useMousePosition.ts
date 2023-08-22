@@ -5,7 +5,7 @@ const useMousePosition = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
 
   const updateMousePosition = (e: any) => {
-    setMousePosition({ x: e.clientX, y: e.clientY });
+    setMousePosition({ x: e?.clientX, y: e?.clientY });
   };
 
   const updateMouseWhenScroll = useCallback((e: any) => {

@@ -38,7 +38,7 @@ export async function getRecommendations(currSlug: string) {
   const currPost = posts?.find((post) => post?.slug === currSlug);
   const otherPosts = posts
     ?.filter((post) => post?.slug !== currPost?.slug)
-    .filter((post) => post?.tags.split(',').some((p) => currPost?.tags?.split(',').includes(p)));
+    .filter((post) => post?.tags?.split(',').some((p) => currPost?.tags?.split(',').includes(p)));
 
   return otherPosts?.slice(0, 3);
 }

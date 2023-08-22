@@ -16,10 +16,10 @@ const Project: FC<ProjectProps> = ({ index, title, subtitle, manageModal, tech }
   return (
     <div
       onMouseEnter={(e) => {
-        manageModal(true, index, e.clientX, e.clientY);
+        manageModal(true, index, e?.clientX, e?.clientY);
       }}
       onMouseLeave={(e) => {
-        manageModal(false, index, e.clientX, e.clientY);
+        manageModal(false, index, e?.clientX, e?.clientY);
       }}
       className="flex w-full justify-between items-center py-4 border-t-2 border-t-gray-300 cursor-pointer transition-all text-stone-950 dark:text-stone-50"
     >

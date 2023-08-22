@@ -25,7 +25,7 @@ const AboutLanding: FC<AboutLandingProps> = ({ setIsHovered, text, masking = fal
   const createAnimation = () => {
     gsap.to(refs?.current, {
       scrollTrigger: {
-        trigger: container.current,
+        trigger: container?.current,
         scrub: true,
         start: `top center`,
         end: `+=400`,

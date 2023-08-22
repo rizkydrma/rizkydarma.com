@@ -47,7 +47,7 @@ export default function CloudinaryImg({
         name: 'blur:1000',
       },
       quality: 1,
-      rawTransformation: aspect ? `c_fill,ar_${aspect.width}:${aspect.height},w_${width}` : undefined,
+      rawTransformation: aspect ? `c_fill,ar_${aspect?.width}:${aspect?.height},w_${width}` : undefined,
     },
   });
   const url = buildUrl(publicId, {
@@ -55,11 +55,11 @@ export default function CloudinaryImg({
       cloudName: 'de3n7a1r0',
     },
     transformations: {
-      rawTransformation: aspect ? `c_fill,ar_${aspect.width}:${aspect.height},w_${width}` : undefined,
+      rawTransformation: aspect ? `c_fill,ar_${aspect?.width}:${aspect?.height},w_${width}` : undefined,
     },
   });
 
-  const aspectRatio = aspect ? aspect.height / aspect.width : undefined;
+  const aspectRatio = aspect ? aspect?.height / aspect?.width : undefined;
 
   const RESIZE_MAX_WIDTH = 1000;
   const resizedToMaxWidth = mdx && +width >= RESIZE_MAX_WIDTH;

@@ -24,25 +24,25 @@ export default function TableOfContents({ toc, activeSection, minLevel }: TableO
 
     if (container && activeLink) {
       // Get container properties
-      const cTop = container.scrollTop;
-      const cBottom = cTop + container.clientHeight;
+      const cTop = container?.scrollTop;
+      const cBottom = cTop + container?.clientHeight;
 
       // Get activeLink properties
-      const lTop = activeLink.offsetTop - container.offsetTop;
+      const lTop = activeLink.offsetTop - container?.offsetTop;
       const lBottom = lTop + activeLink.clientHeight;
 
       // Check if in view
       const isTotal = lTop >= cTop && lBottom <= cBottom;
 
-      const isScrollingUp = lastPosition.current > window.scrollY;
-      lastPosition.current = window.scrollY;
+      const isScrollingUp = lastPosition?.current > window.scrollY;
+      lastPosition.current = window?.scrollY;
 
       if (!isTotal) {
         // Scroll by the whole clientHeight
         const offset = 25;
-        const top = isScrollingUp ? lTop - container.clientHeight + offset : lTop - offset;
+        const top = isScrollingUp ? lTop - container?.clientHeight + offset : lTop - offset;
 
-        container.scrollTo({ top, behavior: 'smooth' });
+        container?.scrollTo({ top, behavior: 'smooth' });
       }
     }
   }, [activeSection]);

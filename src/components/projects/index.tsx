@@ -116,14 +116,14 @@ const Projects = () => {
 
   useEffect(() => {
     //Move Container
-    xMoveContainer.current = gsap.quickTo(modalContainer.current, 'left', { duration: 0.8, ease: 'power3' });
-    yMoveContainer.current = gsap.quickTo(modalContainer.current, 'top', { duration: 0.8, ease: 'power3' });
+    xMoveContainer.current = gsap.quickTo(modalContainer?.current, 'left', { duration: 0.8, ease: 'power3' });
+    yMoveContainer.current = gsap.quickTo(modalContainer?.current, 'top', { duration: 0.8, ease: 'power3' });
     //Move cursor
-    xMoveCursor.current = gsap.quickTo(cursor.current, 'left', { duration: 0.5, ease: 'power3' });
-    yMoveCursor.current = gsap.quickTo(cursor.current, 'top', { duration: 0.5, ease: 'power3' });
+    xMoveCursor.current = gsap.quickTo(cursor?.current, 'left', { duration: 0.5, ease: 'power3' });
+    yMoveCursor.current = gsap.quickTo(cursor?.current, 'top', { duration: 0.5, ease: 'power3' });
     //Move cursor label
-    xMoveCursorLabel.current = gsap.quickTo(cursorLabel.current, 'left', { duration: 0.45, ease: 'power3' });
-    yMoveCursorLabel.current = gsap.quickTo(cursorLabel.current, 'top', { duration: 0.45, ease: 'power3' });
+    xMoveCursorLabel.current = gsap.quickTo(cursorLabel?.current, 'left', { duration: 0.45, ease: 'power3' });
+    yMoveCursorLabel.current = gsap.quickTo(cursorLabel?.current, 'top', { duration: 0.45, ease: 'power3' });
   }, []);
 
   const moveItems = (x: number, y: number) => {
@@ -154,7 +154,7 @@ const Projects = () => {
             return (
               <Project
                 index={index}
-                title={project.title}
+                title={project?.title}
                 manageModal={manageModal}
                 key={index}
                 subtitle={project?.subtitle}
