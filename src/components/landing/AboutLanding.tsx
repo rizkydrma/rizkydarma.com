@@ -23,7 +23,7 @@ const AboutLanding: FC<AboutLandingProps> = ({ setIsHovered, text, masking = fal
   }, []);
 
   const createAnimation = () => {
-    gsap.to(refs.current, {
+    gsap.to(refs?.current, {
       scrollTrigger: {
         trigger: container.current,
         scrub: true,
@@ -57,7 +57,7 @@ const AboutLanding: FC<AboutLandingProps> = ({ setIsHovered, text, masking = fal
           className="opacity-20"
           key={letter + '_' + i}
           ref={(el: any) => {
-            refs.current.push(el);
+            refs?.current?.push(el);
           }}
         >
           {letter}
