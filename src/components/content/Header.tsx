@@ -133,7 +133,7 @@ const Header: FC<HeaderProps> = ({
             animate="visible"
             initial="hidden"
             variants={slideUp}
-            className="col-span-12 lg:col-span-3 flex flex-col gap-2 h-full justify-center"
+            className="col-span-6 lg:col-span-3 flex flex-col gap-2 h-full justify-center"
           >
             <p className="text-xs">Tags</p>
             <div className="flex gap-2">

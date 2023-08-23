@@ -47,28 +47,30 @@ const Home: FC<HomeInterface> = ({ posts }) => {
 
   return (
     <>
-      <motion.main
-        className={cn(
-          `mask dark:bg-indigo-700 bg-yellow-300 text-stone-50 dark:text-stone-950`,
-          isHovered ? 'z-[99]' : '',
-        )}
-        animate={{
-          WebkitMaskPosition: `${x - size / 2}px ${y + scrollPosition - size / 2}px`,
-          WebkitMaskSize: `${size}px`,
-        }}
-        transition={{ type: 'tween', ease: 'backOut', duration: 0.5 }}
-      >
-        <Landing isHovered={isHovered} setIsHovered={setIsHovered} content={<ContentLandingMask />} />
-        <AboutLanding
-          setIsHovered={setIsHovered}
-          masking
-          text="My code dances to the beat of its own drum, swaying gracefully between reality and imagination.I conjure
+      <div className="hidden lg:block">
+        <motion.main
+          className={cn(
+            `mask dark:bg-indigo-700 bg-yellow-300 text-stone-50 dark:text-stone-950`,
+            isHovered ? 'z-[99]' : '',
+          )}
+          animate={{
+            WebkitMaskPosition: `${x - size / 2}px ${y + scrollPosition - size / 2}px`,
+            WebkitMaskSize: `${size}px`,
+          }}
+          transition={{ type: 'tween', ease: 'backOut', duration: 0.5 }}
+        >
+          <Landing isHovered={isHovered} setIsHovered={setIsHovered} content={<ContentLandingMask />} />
+          <AboutLanding
+            setIsHovered={setIsHovered}
+            masking
+            text="My code dances to the beat of its own drum, swaying gracefully between reality and imagination.I conjure
           interactive spells and lead them on magical journeys."
-        />
-        <Projects />
-        <FeaturedPost posts={populatedPost} />
-        <Experiences />
-      </motion.main>
+          />
+          <Projects />
+          <FeaturedPost posts={populatedPost} />
+          <Experiences />
+        </motion.main>
+      </div>
 
       <AnimatePresence mode="wait">{loading && <Preloader />}</AnimatePresence>
       <Landing isHovered={isHovered} setIsHovered={setIsHovered} content={<ContentLanding />} />

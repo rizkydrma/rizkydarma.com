@@ -143,72 +143,95 @@ const Projects = () => {
     <section id="projects" className="container max-w-7xl mx-auto min-h-[80vh] relative lg:mt-[300px]">
       <Highlight className="text-sm lg:text-lg font-mono uppercase my-3 lg:mx-6">Featured Project</Highlight>
 
-      <main
-        onMouseMove={(e) => {
-          moveItems(e.clientX, e.clientY);
-        }}
-        className="flex items-center flex-col lg:px-6 pt-6"
-      >
-        <div className="max-w-[1400px] w-full flex flex-col items-center justify-center mb-[100px]">
-          {projects.map((project, index) => {
-            return (
-              <Project
-                index={index}
-                title={project?.title}
-                manageModal={manageModal}
-                key={index}
-                subtitle={project?.subtitle}
-                tech={project?.tech}
-              />
-            );
-          })}
-          <Link href="/projects" className={buttonVariants({})}>
-            See more project
-          </Link>
-        </div>
-        <>
-          <motion.div
-            ref={modalContainer}
-            variants={scaleAnimation}
-            initial="initial"
-            animate={active ? 'enter' : 'closed'}
-            className="h-[350px] w-[400px] fixed top-[50%] left-[50%] bg-stone-50 pointer-events-none overflow-hidden z-[999]"
-          >
-            <div
-              style={{ top: index * -100 + '%', transition: 'top 0.5s cubic-bezier(0.76, 0, 0.24, 1)' }}
-              className="h-full w-full relative"
+      <main className="hidden lg:block">
+        <div
+          onMouseMove={(e) => {
+            moveItems(e.clientX, e.clientY);
+          }}
+          className="flex items-center flex-col lg:px-6 pt-6"
+        >
+          <div className="max-w-[1400px] w-full flex flex-col items-center justify-center mb-[100px]">
+            {projects.map((project, index) => {
+              return (
+                <Project
+                  index={index}
+                  title={project?.title}
+                  manageModal={manageModal}
+                  key={index}
+                  subtitle={project?.subtitle}
+                  tech={project?.tech}
+                />
+              );
+            })}
+            <Link href="/projects" className={buttonVariants({})}>
+              See more project
+            </Link>
+          </div>
+          <>
+            <motion.div
+              ref={modalContainer}
+              variants={scaleAnimation}
+              initial="initial"
+              animate={active ? 'enter' : 'closed'}
+              className="h-[350px] w-[400px] fixed top-[50%] left-[50%] bg-stone-50 pointer-events-none overflow-hidden z-[999]"
             >
-              {projects.map((project, index) => {
-                const { src, color } = project;
-                return (
-                  <div
-                    className="h-full w-full flex items-center justify-center"
-                    style={{ backgroundColor: color }}
-                    key={`modal_${index}`}
-                  >
-                    <Image src={src} width={350} height={0} alt="image" className="h-auto" />
-                  </div>
-                );
-              })}
-            </div>
-          </motion.div>
-          <motion.div
-            ref={cursor}
-            className="w-[80px] h-[80px] rounded-full bg-yellow-400 dark:bg-indigo-600 text-white fixed z-[999] flex items-center justify-center text-lg pointer-events-none"
-            variants={scaleAnimation}
-            initial="initial"
-            animate={active ? 'enter' : 'closed'}
-          ></motion.div>
-          <motion.div
-            ref={cursorLabel}
-            className="w-[80px] h-[80px] rounded-full bg-yellow-400 dark:bg-indigo-600 text-white fixed z-[999] flex items-center justify-center text-lg pointer-events-none bg-transparent"
-            variants={scaleAnimation}
-            initial="initial"
-            animate={active ? 'enter' : 'closed'}
-          >
-            View
-          </motion.div>
-        </>
+              <div
+                style={{ top: index * -100 + '%', transition: 'top 0.5s cubic-bezier(0.76, 0, 0.24, 1)' }}
+                className="h-full w-full relative"
+              >
+                {projects.map((project, index) => {
+                  const { src, color } = project;
+                  return (
+                    <div
+                      className="h-full w-full flex items-center justify-center"
+                      style={{ backgroundColor: color }}
+                      key={`modal_${index}`}
+                    >
+                      <Image src={src} width={350} height={0} alt="image" className="h-auto" />
+                    </div>
+                  );
+                })}
+              </div>
+            </motion.div>
+            <motion.div
+              ref={cursor}
+              className="w-[80px] h-[80px] rounded-full bg-yellow-400 dark:bg-indigo-600 text-white fixed z-[999] flex items-center justify-center text-lg pointer-events-none"
+              variants={scaleAnimation}
+              initial="initial"
+              animate={active ? 'enter' : 'closed'}
+            ></motion.div>
+            <motion.div
+              ref={cursorLabel}
+              className="w-[80px] h-[80px] rounded-full bg-yellow-400 dark:bg-indigo-600 text-white fixed z-[999] flex items-center justify-center text-lg pointer-events-none bg-transparent"
+              variants={scaleAnimation}
+              initial="initial"
+              animate={active ? 'enter' : 'closed'}
+            >
+              View
+            </motion.div>
+          </>
+        </div>
+      </main>
+
+      <main>
+        <div className="flex items-center flex-col lg:px-6 pt-6">
+          <div className="max-w-[1400px] w-full flex flex-col items-center justify-center mb-[100px]">
+            {projects.map((project, index) => {
+              return (
+                <Project
+                  index={index}
+                  title={project?.title}
+                  key={index}
+                  subtitle={project?.subtitle}
+                  tech={project?.tech}
+                />
+              );
+            })}
+            <Link href="/projects" className={buttonVariants({})}>
+              See more project
+            </Link>
+          </div>
+        </div>
       </main>
     </section>
   );

@@ -6,7 +6,7 @@ import { ITechProject } from '..';
 
 export interface ProjectProps {
   index: number;
-  manageModal: (active: boolean, index: number, x: number, y: number) => void;
+  manageModal?: (active: boolean, index: number, x: number, y: number) => void;
   title: string;
   subtitle: string;
   tech: ITechProject[];
@@ -15,12 +15,20 @@ export interface ProjectProps {
 const Project: FC<ProjectProps> = ({ index, title, subtitle, manageModal, tech }) => {
   return (
     <div
-      onMouseEnter={(e) => {
-        manageModal(true, index, e?.clientX, e?.clientY);
-      }}
-      onMouseLeave={(e) => {
-        manageModal(false, index, e?.clientX, e?.clientY);
-      }}
+      onMouseEnter={
+        manageModal
+          ? (e) => {
+              manageModal(true, index, e?.clientX, e?.clientY);
+            }
+          : undefined
+      }
+      onMouseLeave={
+        manageModal
+          ? (e) => {
+              manageModal(false, index, e?.clientX, e?.clientY);
+            }
+          : undefined
+      }
       className="flex w-full justify-between items-center py-4 border-t-2 border-t-gray-300 cursor-pointer transition-all text-stone-950 dark:text-stone-50"
     >
       <div>

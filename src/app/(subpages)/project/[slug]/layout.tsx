@@ -60,7 +60,7 @@ const layout = async ({
   return (
     <div className="pt-20">
       <Header {...project} shouldRegisterView={true} />
-      <MainContent>{children}</MainContent>
+      <MainContent demo={project?.link}>{children}</MainContent>
       <Footer
         post={project}
         recommendations={[]}

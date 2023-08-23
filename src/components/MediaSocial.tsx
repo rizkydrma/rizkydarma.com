@@ -46,7 +46,7 @@ const MediaSocial: FC<MediaSocialProps> = ({ align }) => {
     <div className={cn(`fixed bottom-20 left-2 lg:flex lg:flex-col z-[999] gap-y-1 hidden`)}>
       {socials?.map((social) => (
         <Magnetic key={social?.href}>
-          <Link href={social?.href} className="p-2 transition-colors rounded-full">
+          <Link href={social?.href} className="p-2 transition-colors rounded-full" target="_blank">
             {social?.icon}
           </Link>
         </Magnetic>

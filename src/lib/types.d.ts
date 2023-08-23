@@ -13,6 +13,7 @@ export type Post = {
   href?: string;
   banner?: string;
   count?: number;
+  link?: string;
 };
 
 export type Project = {
