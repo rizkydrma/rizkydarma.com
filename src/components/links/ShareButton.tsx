@@ -1,10 +1,15 @@
 'use client';
-import { FC } from 'react';
-import { FacebookShareButton, TwitterShareButton, LinkedinShareButton } from 'react-share';
-import { FacebookIcon, TwitterIcon, LinkedinIcon } from 'react-share';
-import { paragraphVariants } from '../ui/Paragraph';
-import Tooltip from '../Tooltip';
 import { Post } from '@/lib/types';
+import { FC } from 'react';
+import {
+  FacebookIcon,
+  FacebookShareButton,
+  LinkedinIcon,
+  LinkedinShareButton,
+  TwitterIcon,
+  TwitterShareButton,
+} from 'react-share';
+import { paragraphVariants } from '../ui/Paragraph';
 
 interface ShareButtonProps {
   url: string;

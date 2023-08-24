@@ -8,6 +8,7 @@ import { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import Footer from '@/components/Footer';
+import { TooltipProvider } from '@/components/Tooltip';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -29,12 +30,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         )}
       >
         <Providers>
-          {/* <Cursor /> */}
-          <ProgressBarScroll />
-          <Navbar />
-          {children}
-          <Footer />
-          <MediaSocial />
+          <TooltipProvider>
+            {/* <Cursor /> */}
+            <ProgressBarScroll />
+            <Navbar />
+            {children}
+            <Footer />
+            <MediaSocial />
+          </TooltipProvider>
         </Providers>
       </body>
     </html>

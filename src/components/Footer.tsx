@@ -1,8 +1,7 @@
 'use client';
-import React from 'react';
-import Tooltip from './Tooltip';
 import Link from 'next/link';
 import { socials } from './MediaSocial';
+import { Tooltip, TooltipContent, TooltipTrigger } from './Tooltip';
 
 const footerLinks = [
   {
@@ -26,18 +25,33 @@ const Footer = () => {
         <h1 className="font-bold">Reach me out</h1>
         <div className="flex gap-2">
           {socials?.map((social) => (
-            <Link key={social?.href} href={social?.href} className="p-2 transition-colors rounded-full">
-              {social?.icon}
-            </Link>
+            <Tooltip key={social?.href}>
+              <TooltipTrigger>
+                <Link href={social?.href} className="p-2 transition-colors rounded-full">
+                  {social?.icon}
+                </Link>
+              </TooltipTrigger>
+
+              <TooltipContent>
+                <p>{social?.description}</p>
+              </TooltipContent>
+            </Tooltip>
           ))}
         </div>
       </div>
 
       <div className="space-x-4 flex flex-wrap">
         {footerLinks?.map((footer) => (
-          <Link key={footer?.href} href={footer?.href} className="animated-underline inline-block">
-            {footer?.text}
-          </Link>
+          <Tooltip key={footer?.href}>
+            <TooltipTrigger>
+              <Link href={footer?.href} className="animated-underline inline-block">
+                {footer?.text}
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>{footer?.tooltip}</p>
+            </TooltipContent>
+          </Tooltip>
         ))}
       </div>
     </div>

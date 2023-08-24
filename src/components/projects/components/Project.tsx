@@ -1,9 +1,9 @@
 'use client';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/Tooltip';
 import { IMAGES, TLogoKey } from '@/lib/image';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
-// import { ITechProject } from '..';
 
 export interface ProjectProps {
   index: number;
