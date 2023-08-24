@@ -80,15 +80,11 @@ const ContentLanding: FC<ContentLandingProps> = ({}) => {
 
       <div data-scroll data-scroll-speed="0.4">
         <div className="flex items-center gap-4">
-          <motion.button
-            custom={4}
-            animate="visible"
-            initial="hidden"
-            variants={slideUpText}
-            className={buttonVariants({ className: 'w-fit' })}
-          >
-            Learn about me
-          </motion.button>
+          <motion.div custom={4} animate="visible" initial="hidden" variants={slideUpText}>
+            <Link href="/about" className={buttonVariants({ className: 'w-fit' })}>
+              Learn about me
+            </Link>
+          </motion.div>
 
           <motion.div custom={4} animate="visible" initial="hidden" variants={slideUpText}>
             <Link

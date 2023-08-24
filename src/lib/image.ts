@@ -8,3 +8,10 @@ export const IMAGES = {
   remix: 'https://res.cloudinary.com/de3n7a1r0/image/upload/v1692517054/icons/s8jfpwjy9cgrzymop7kg.png',
   nodejs: 'https://res.cloudinary.com/de3n7a1r0/image/upload/v1691370375/nodejs-1-logo-svgrepo-com_hiqzqv.svg',
 };
+export const COLORS: any = {
+  color1: '#000000',
+  color2: '#8C8C8C',
+  color3: '#EFE8D3',
+  color4: '#706D63',
+  color5: '#eeefff',
+};

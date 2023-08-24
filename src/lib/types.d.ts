@@ -14,6 +14,7 @@ export type Post = {
   banner?: string;
   count?: number;
   link?: string;
+  tech?: string;
 };
 
 export type Project = {

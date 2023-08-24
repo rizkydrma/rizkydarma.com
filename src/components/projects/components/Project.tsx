@@ -1,20 +1,24 @@
 'use client';
-import { IMAGES } from '@/lib/image';
+import { IMAGES, TLogoKey } from '@/lib/image';
 import Image from 'next/image';
+import Link from 'next/link';
 import { FC } from 'react';
-import { ITechProject } from '..';
+// import { ITechProject } from '..';
 
 export interface ProjectProps {
   index: number;
   manageModal?: (active: boolean, index: number, x: number, y: number) => void;
   title: string;
   subtitle: string;
-  tech: ITechProject[];
+  tech?: string;
+  slug: string;
 }
 
-const Project: FC<ProjectProps> = ({ index, title, subtitle, manageModal, tech }) => {
+const Project: FC<ProjectProps> = ({ index, title, subtitle, manageModal, tech, slug }) => {
+  const arrTech = tech?.split(',') as TLogoKey[];
   return (
-    <div
+    <Link
+      href={`/project/${slug}`}
       onMouseEnter={
         manageModal
           ? (e) => {
@@ -39,10 +43,10 @@ const Project: FC<ProjectProps> = ({ index, title, subtitle, manageModal, tech }
       <div>
         <p className="text-xs tracking-wide text-right pb-2 font-medium">Tech Stack</p>
         <div className="flex items-center gap-4">
-          {tech?.map((item) => (
+          {arrTech?.map((item) => (
             <Image
-              key={item?.logo_key}
-              src={IMAGES[item?.logo_key]}
+              key={item}
+              src={IMAGES[item]}
               width={25}
               height={0}
               alt="image"
@@ -51,7 +55,7 @@ const Project: FC<ProjectProps> = ({ index, title, subtitle, manageModal, tech }
           ))}
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

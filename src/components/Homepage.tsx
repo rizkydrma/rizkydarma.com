@@ -18,9 +18,10 @@ import useSWR from 'swr';
 
 interface HomeInterface {
   posts: Post[];
+  projects: Post[];
 }
 
-const Home: FC<HomeInterface> = ({ posts }) => {
+const Home: FC<HomeInterface> = ({ posts, projects }) => {
   const { data, error } = useSWR<Views[]>('/api/views/all', fetcher);
   const [loading, setLoading] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
@@ -66,7 +67,7 @@ const Home: FC<HomeInterface> = ({ posts }) => {
             text="My code dances to the beat of its own drum, swaying gracefully between reality and imagination.I conjure
           interactive spells and lead them on magical journeys."
           />
-          <Projects />
+          <Projects projects={projects} />
           <FeaturedPost posts={populatedPost} />
           <Experiences />
         </motion.main>
@@ -80,7 +81,7 @@ const Home: FC<HomeInterface> = ({ posts }) => {
         text="In the world of frontend development, I`m not just a developer; I`m a mad scientist of pixels, a dreamweaver
           of interfaces, and a conductor of digital symphonies."
       />
-      <Projects />
+      <Projects projects={projects} />
       <FeaturedPost posts={populatedPost} />
       <Experiences />
     </>

@@ -1,97 +1,18 @@
 'use client';
+import { COLORS } from '@/lib/image';
+import { Post } from '@/lib/types';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
-import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
+import BaseCloudinaryImg from '../images/BaseImage';
 import { buttonVariants } from '../ui/Button';
 import Highlight from '../ui/Highlight';
 import Project from './components/Project';
-import { TLogoKey } from '@/lib/image';
 
-export interface ITechProject {
-  name: string;
-  logo_key: TLogoKey;
+interface ProjectsProps {
+  projects: Post[];
 }
-
-export type IProject = {
-  title: string;
-  subtitle: string;
-  src: string;
-  color: string;
-  tech: ITechProject[];
-};
-
-const projects: IProject[] = [
-  {
-    title: 'Find Medical Vaccine',
-    subtitle: 'WEB GIS dissemination of health centers',
-    src: 'https://res.cloudinary.com/de3n7a1r0/image/upload/v1690243161/Screenshot_2023-07-25_at_06.57.24-min_ewvdn0.png',
-    color: '#000000',
-    tech: [
-      {
-        name: 'Tailwind',
-        logo_key: 'tailwind',
-      },
-      {
-        name: 'Next JS 13',
-        logo_key: 'nextjs',
-      },
-      {
-        name: 'Leaflet',
-        logo_key: 'leaflet',
-      },
-    ],
-  },
-  {
-    title: 'Karyamultisejatiwood',
-    subtitle: 'Company Profile For Furniture Factory',
-    src: 'https://res.cloudinary.com/de3n7a1r0/image/upload/v1691245870/Screenshot_2023-08-05_at_21.26.50-min_1_zlpyjz.png',
-    color: '#8C8C8C',
-    tech: [
-      {
-        name: 'React',
-        logo_key: 'react',
-      },
-      {
-        name: 'Sass',
-        logo_key: 'sass',
-      },
-    ],
-  },
-  {
-    title: 'Kerabat Motret',
-    subtitle: 'Portofolio a photography service',
-    src: 'https://res.cloudinary.com/de3n7a1r0/image/upload/v1691245436/Screenshot_2023-08-05_at_21.21.18-min_o0ajaw.png',
-    color: '#EFE8D3',
-    tech: [
-      {
-        name: 'React',
-        logo_key: 'react',
-      },
-      {
-        name: 'Sass',
-        logo_key: 'sass',
-      },
-    ],
-  },
-  {
-    title: 'Gheebat App',
-    subtitle: 'Forum App',
-    src: 'https://res.cloudinary.com/de3n7a1r0/image/upload/v1691245879/Screenshot_2023-08-05_at_21.28.40-min_cwxjro.png',
-    color: '#706D63',
-    tech: [
-      {
-        name: 'React',
-        logo_key: 'react',
-      },
-      {
-        name: 'Tailwind',
-        logo_key: 'tailwind',
-      },
-    ],
-  },
-];
 
 const scaleAnimation = {
   initial: { scale: 0, x: '-50%', y: '-50%' },
@@ -99,7 +20,7 @@ const scaleAnimation = {
   closed: { scale: 0, x: '-50%', y: '-50%', transition: { duration: 0.4, ease: [0.32, 0, 0.67, 0] } },
 };
 
-const Projects = () => {
+const Projects: FC<ProjectsProps> = ({ projects }) => {
   const [modal, setModal] = useState({ active: false, index: 0 });
   const { active, index } = modal;
 
@@ -158,8 +79,9 @@ const Projects = () => {
                   title={project?.title}
                   manageModal={manageModal}
                   key={index}
-                  subtitle={project?.subtitle}
+                  subtitle={project?.description}
                   tech={project?.tech}
+                  slug={project?.slug}
                 />
               );
             })}
@@ -180,19 +102,26 @@ const Projects = () => {
                 className="h-full w-full relative"
               >
                 {projects.map((project, index) => {
-                  const { src, color } = project;
                   return (
                     <div
                       className="h-full w-full flex items-center justify-center"
-                      style={{ backgroundColor: color }}
+                      style={{ backgroundColor: COLORS[`color${index + 1}`] }}
                       key={`modal_${index}`}
                     >
-                      <Image src={src} width={350} height={0} alt="image" className="h-auto" />
+                      <BaseCloudinaryImg
+                        // className="h-auto"
+                        publicId={project?.banner || ''}
+                        alt="landing-page"
+                        width={'350'}
+                        height={'200'}
+                      />
+                      {/* <Image src={src} width={350} height={0} alt="image" className="h-auto" /> */}
                     </div>
                   );
                 })}
               </div>
             </motion.div>
+
             <motion.div
               ref={cursor}
               className="w-[80px] h-[80px] rounded-full bg-yellow-400 dark:bg-indigo-600 text-white fixed z-[999] flex items-center justify-center text-lg pointer-events-none"
@@ -200,6 +129,7 @@ const Projects = () => {
               initial="initial"
               animate={active ? 'enter' : 'closed'}
             ></motion.div>
+
             <motion.div
               ref={cursorLabel}
               className="w-[80px] h-[80px] rounded-full bg-yellow-400 dark:bg-indigo-600 text-white fixed z-[999] flex items-center justify-center text-lg pointer-events-none bg-transparent"
@@ -207,13 +137,13 @@ const Projects = () => {
               initial="initial"
               animate={active ? 'enter' : 'closed'}
             >
-              View
+              Detail
             </motion.div>
           </>
         </div>
       </main>
 
-      <main>
+      <main className="block lg:hidden">
         <div className="flex items-center flex-col lg:px-6 pt-6">
           <div className="max-w-[1400px] w-full flex flex-col items-center justify-center mb-[100px]">
             {projects.map((project, index) => {
@@ -222,8 +152,9 @@ const Projects = () => {
                   index={index}
                   title={project?.title}
                   key={index}
-                  subtitle={project?.subtitle}
+                  subtitle={project?.description}
                   tech={project?.tech}
+                  slug={project?.slug}
                 />
               );
             })}
