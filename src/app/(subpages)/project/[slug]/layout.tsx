@@ -22,10 +22,14 @@ export const generateMetadata = async ({
   const project = (await getProjects()).find((item) => item?.slug === params?.slug);
 
   return {
-    title: project?.title,
+    title: `${project?.title} | Rizky Darma`,
     description: project?.description,
     alternates: {
       canonical: `https://rizkydarma.com/projects/${params?.slug}`,
+    },
+    openGraph: {
+      images: project?.image,
+      url: `https://rizkydarma.com/projects/${params?.slug}`,
     },
   };
 };

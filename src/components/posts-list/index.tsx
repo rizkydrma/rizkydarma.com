@@ -41,7 +41,7 @@ const PostList: FC<PostListProps> = ({ posts, paginate }) => {
 
     setFilteredPosts(results);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [posts, search]);
+  }, [posts, search, data]);
 
   return (
     <>

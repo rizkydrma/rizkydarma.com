@@ -12,6 +12,7 @@ export type Post = {
   isThirdParty?: boolean;
   href?: string;
   banner?: string;
+  image?: string;
   count?: number;
   link?: string;
   tech?: string;

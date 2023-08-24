@@ -21,7 +21,7 @@ const ProjectList: FC<ProjectListProps> = ({ projects, paginate }) => {
 
   const [showMore, setShowMore] = useState(6);
   return (
-    <section className="container max-w-7xl mx-auto pt-40 min-h-[90vh]">
+    <section className="container max-w-7xl mx-auto pt-40 min-h-[90vh] pb-12">
       <motion.h1
         custom={1}
         animate="visible"
