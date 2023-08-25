@@ -61,7 +61,7 @@ const Header: FC<HeaderProps> = ({
         height={heightImage}
         aspect={aspectRatio}
       />
-      <div className="container max-w-7xl  absolute bottom-[40%] left-0 right-0 z-10">
+      <div className="container max-w-7xl  absolute bottom-[50%] lg:bottom-[40%] left-0 right-0 z-10">
         <motion.h1
           custom={0.6}
           animate="visible"
@@ -89,7 +89,7 @@ const Header: FC<HeaderProps> = ({
             animate="visible"
             initial="hidden"
             variants={slideUp}
-            className="col-span-6 lg:col-span-2 flex flex-col gap-2 h-full justify-center"
+            className="col-span-5 lg:col-span-2 flex flex-col gap-2 h-full justify-start lg:justify-center"
           >
             <p className="text-xs">Written by</p>
             <div className="flex gap-2 h-4 items-center">
@@ -110,7 +110,7 @@ const Header: FC<HeaderProps> = ({
             animate="visible"
             initial="hidden"
             variants={slideUp}
-            className="col-span-6 lg:col-span-2 flex flex-col gap-2 h-full justify-center"
+            className="col-span-7 lg:col-span-2 flex flex-col gap-2 h-full justify-start lg:justify-center"
           >
             <p className="text-xs">Published on</p>
             <div className="text-xs">{formatDate(publishedAt)}</div>
@@ -120,7 +120,7 @@ const Header: FC<HeaderProps> = ({
             animate="visible"
             initial="hidden"
             variants={slideUp}
-            className="col-span-6 lg:col-span-5 flex flex-col gap-2 h-full justify-center"
+            className="col-span-5 lg:col-span-5 flex flex-col gap-2 h-full justify-start lg:justify-center"
           >
             <p className="text-xs">Views</p>
             <div className="text-xs">
@@ -133,10 +133,10 @@ const Header: FC<HeaderProps> = ({
             animate="visible"
             initial="hidden"
             variants={slideUp}
-            className="col-span-6 lg:col-span-3 flex flex-col gap-2 h-full justify-center"
+            className="col-span-7 lg:col-span-3 flex flex-col gap-2 h-full justify-start lg:justify-center"
           >
             <p className="text-xs">Tags</p>
-            <div className="flex gap-2">
+            <div className="flex gap-2 flex-wrap">
               {tags?.split(',').map((tag) => (
                 <Badge value={tag} key={tag} />
               ))}

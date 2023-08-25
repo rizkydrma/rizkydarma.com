@@ -109,13 +109,11 @@ const Projects: FC<ProjectsProps> = ({ projects }) => {
                       key={`modal_${index}`}
                     >
                       <BaseCloudinaryImg
-                        // className="h-auto"
                         publicId={project?.banner || ''}
                         alt="landing-page"
                         width={'350'}
                         height={'200'}
                       />
-                      {/* <Image src={src} width={350} height={0} alt="image" className="h-auto" /> */}
                     </div>
                   );
                 })}

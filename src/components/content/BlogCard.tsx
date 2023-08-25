@@ -30,7 +30,7 @@ const BlogCard: FC<BlogCardProps> = ({ post, url, urlImage }) => {
 
           <div className="group-hover:before:inset-0 group-hover:before:bg-stone-900/40 group-hover:before:absolute group-hover:before:z-[999] group-hover:before:flex group-hover:before:items-center group-hover:before:justify-center group-hover:before:content-[url('/eye.svg')]  font-bold group-hover:before:scale-105 transition duration-200"></div>
 
-          <div className="flex absolute top-3 left-4 gap-2">
+          <div className="flex absolute top-3 left-4 gap-2 flex-wrap">
             {post?.tags?.split(',').map((tag) => (
               <Badge value={tag} key={tag} />
             ))}

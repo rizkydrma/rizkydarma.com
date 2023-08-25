@@ -3,6 +3,7 @@ import NextImage from 'next/image';
 import { Code } from 'bright';
 import { MDXImage } from './mdx-image';
 import { Tweet } from 'react-tweet';
+import BaseCloudinaryImg from '@/components/images/BaseImage';
 import CloudinaryImage from '@/components/images/CloudinaryImage';
 import SplitImage, { Split } from '@/components/content/SplitImage';
 
@@ -43,4 +44,5 @@ export const mdxComponents: MDXComponents = {
   CloudinaryImg: CloudinaryImage,
   Split: Split,
   SplitImage: SplitImage,
+  BaseCloudinaryImg: BaseCloudinaryImg,
 };
