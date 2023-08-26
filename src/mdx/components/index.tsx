@@ -6,6 +6,7 @@ import { Tweet } from 'react-tweet';
 import BaseCloudinaryImg from '@/components/images/BaseImage';
 import CloudinaryImage from '@/components/images/CloudinaryImage';
 import SplitImage, { Split } from '@/components/content/SplitImage';
+import Techstack from '@/components/about/Techstack';
 
 export const mdxComponents: MDXComponents = {
   pre: ({ children, ...props }: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLPreElement>) => {
@@ -45,4 +46,5 @@ export const mdxComponents: MDXComponents = {
   Split: Split,
   SplitImage: SplitImage,
   BaseCloudinaryImg: BaseCloudinaryImg,
+  Techstack: Techstack,
 };

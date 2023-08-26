@@ -80,7 +80,7 @@ const Projects: FC<ProjectsProps> = ({ projects }) => {
                   manageModal={manageModal}
                   key={index}
                   subtitle={project?.description}
-                  tech={project?.tech}
+                  tech={project?.tags}
                   slug={project?.slug}
                 />
               );
@@ -151,7 +151,7 @@ const Projects: FC<ProjectsProps> = ({ projects }) => {
                   title={project?.title}
                   key={index}
                   subtitle={project?.description}
-                  tech={project?.tech}
+                  tech={project?.tags}
                   slug={project?.slug}
                 />
               );

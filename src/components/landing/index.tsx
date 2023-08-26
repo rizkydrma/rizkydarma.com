@@ -10,7 +10,7 @@ interface LandingProps {
 
 const Landing: FC<LandingProps> = ({ setIsHovered, isHovered, content }) => {
   return (
-    <main className={cn('relative flex h-[80vh] lg:h-[100vh] container max-w-7xl')}>
+    <main className={cn('relative flex h-[80vh] lg:h-[100vh] container max-w-7xl z-20')}>
       <div
         className="flex flex-col lg:px-6 pt-[30vh]"
         onMouseEnter={() => {

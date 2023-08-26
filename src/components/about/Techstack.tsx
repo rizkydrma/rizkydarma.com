@@ -3,49 +3,32 @@ import { IMAGES, TLogoKey } from '@/lib/image';
 import Image from 'next/image';
 import { FC } from 'react';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../Tooltip';
+import { cn } from '@/lib/utils';
 
-interface TechstackProps {}
+interface TechstackProps {
+  techs: string;
+  className?: string;
+}
 
-const TechStacks: { name: string; key: TLogoKey }[] = [
-  {
-    name: 'Remix',
-    key: 'remix',
-  },
-  {
-    name: 'React',
-    key: 'react',
-  },
-  {
-    name: 'NextJS',
-    key: 'nextjs',
-  },
-  {
-    name: 'Tailwind',
-    key: 'tailwind',
-  },
-  {
-    name: 'NodeJs',
-    key: 'nodejs',
-  },
-];
+const Techstack: FC<TechstackProps> = ({ techs, className }) => {
+  const techStacks = techs?.split(',') as TLogoKey[];
 
-const Techstack: FC<TechstackProps> = ({}) => {
   return (
-    <div className="flex items-center gap-2">
-      {TechStacks.map((tech, index: number) => (
-        <figure className="p-2" key={tech?.key}>
+    <div className={cn('flex items-center gap-2', className)}>
+      {techStacks.map((tech, index: number) => (
+        <figure className="p-2" key={tech}>
           <Tooltip>
             <TooltipTrigger>
               <Image
-                src={IMAGES[tech?.key]}
+                src={IMAGES[tech]}
                 width={index == 0 ? 25 : 35}
                 height={0}
-                alt="image"
+                alt={tech}
                 className="h-auto dark:invert opacity-80 grayscale"
               />
             </TooltipTrigger>
             <TooltipContent>
-              <p>{tech?.name}</p>
+              <p className="capitalize">{tech}</p>
             </TooltipContent>
           </Tooltip>
         </figure>

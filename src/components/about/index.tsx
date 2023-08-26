@@ -1,16 +1,18 @@
 'use client';
+import { slideUp } from '@/common/slideup';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { FC } from 'react';
-import { headingVariants } from '../ui/LargeHeading';
 import CloudinaryImg from '../images/CloudinaryImage';
 import Highlight from '../ui/Highlight';
-import Link from 'next/link';
+import { headingVariants } from '../ui/LargeHeading';
 import Techstack from './Techstack';
-import { motion } from 'framer-motion';
-import { slideUp } from '@/common/slideup';
 
 interface AboutProps {}
 
 const About: FC<AboutProps> = ({}) => {
+  const techs = 'remix,react,nextjs,tailwind,nodejs';
+
   return (
     <section className="container max-w-7xl mx-auto py-40 min-h-[90vh]">
       <motion.h1 custom={1} animate="visible" initial="hidden" variants={slideUp} className={headingVariants({})}>
@@ -66,7 +68,7 @@ const About: FC<AboutProps> = ({}) => {
       <motion.div custom={2.5} animate="visible" initial="hidden" variants={slideUp} className="mt-8">
         <h1 className={headingVariants({ size: 'xs' })}>Current Favorite Tech Stack</h1>
 
-        <Techstack />
+        <Techstack techs={techs} />
       </motion.div>
     </section>
   );
