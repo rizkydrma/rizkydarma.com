@@ -69,9 +69,9 @@ const Experience: FC<ExperienceProps> = ({}) => {
           <li className="tracking-wide leading-relaxed text-xs lg:text-base">
             Collaborate with cross-functional teams in delivering customer-centric tech products and services.
           </li>
-          <li className="tracking-wide leading-relaxed text-xs lg:text-base">
+          {/* <li className="tracking-wide leading-relaxed text-xs lg:text-base">
             Have a good way to explain things clearly to the team even to the non-technical person.
-          </li>
+          </li> */}
         </ul>
       </div>
 

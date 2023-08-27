@@ -9,12 +9,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date().toISOString();
   const blogs = posts?.map((post) => ({
     url: `https://rizkydarma.com/blog/${post?.slug}`,
-    lastModified: post?.lastModified ? new Date(post.lastModified).toISOString() : now,
+    lastModified: now,
   }));
 
   const projects = listProjects?.map((project) => ({
     url: `https://rizkydarma.com/project/${project?.slug}`,
-    lastModified: project?.lastModified ? new Date(project.lastModified).toISOString() : now,
+    lastModified: now,
   }));
 
   const routes = ['', '/about', '/guestbook'].map((route) => ({
