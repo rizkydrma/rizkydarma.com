@@ -1,0 +1,37 @@
+---
+title: 'Mengenal Automation Testing'
+slug: 'mengenal-automation-testing'
+publishedAt: '2023-10-30'
+description: 'Automation testing pada pengembangan aplikasi adalah proses pengujian yang menggunakan perangkat lunak untuk secara otomatis mengevaluasi apakah aplikasi berjalan sesuai dengan harapan atau tidak.'
+banner: 'banner/q69srjaprdm0vrwjnlab'
+image: 'https://res.cloudinary.com/de3n7a1r0/image/upload/v1692018279/banner/q69srjaprdm0vrwjnlab.jpg'
+tags: 'javascript'
+---
+
+# Mengenal Automation Testing
+
+Automation testing pada pengembangan aplikasi adalah proses pengujian yang menggunakan perangkat lunak untuk secara otomatis mengevaluasi apakah aplikasi berjalan sesuai dengan harapan atau tidak. Dalam konteks automation testing, pengujian dapat mencakup pengujian keseluruhan aplikasi atau pengujian pada tingkat kode yang telah dibuat.
+
+Dalam dunia automation testing, pengujian biasanya dibagi menjadi beberapa tingkatan. Di tingkat paling bawah, terdapat Unit Testing, yang fokus pada pengujian unit kode atau komponen individu. Kemudian, di tingkat menengah, terdapat Integration Testing, yang menguji interaksi antara komponen-komponen tersebut. Pada tingkat paling atas, terdapat End-to-End Testing, yang menguji aplikasi secara menyeluruh untuk memastikan fungsionalitasnya bekerja dengan baik dalam skenario yang sesungguhnya. Biasanya, konsep ini digambarkan dalam bentuk piramida pengujian yang menunjukkan seberapa banyak pengujian yang harus dilakukan di masing-masing tingkatan.
+
+<CloudinaryImg
+  mdx
+  className="!mb-0 not-prose"
+  publicId="blogs/automation-testing/le2lvdwe2uwld5idf5if"
+  alt="piramida"
+  width={800}
+  height={500}
+/>
+
+1.  **Unit Testing**
+    Pengujian yang berorientasi pada satu unit tertentu. Unit yang diuji dapat berupa fungsi, objek, atau modul yang kita buat sendiri. Tentu saja, ketika membuat pengujian unit, fokusnya adalah pada unit tersebut, tanpa campur tangan unsur eksternal, seperti DOM, REST API, atau elemen eksternal lainnya.
+    Sebagai contoh, dalam aplikasi React, pengujian unit dapat dilakukan untuk menguji fungsi reducer."
+2.  **Integration Test**
+    Pengujian yang mengevaluasi sejalannya kerja bersama unit dalam berkolaborasi. Ini berarti pengujian tidak hanya menitikberatkan pada satu unit yang diuji, melainkan melibatkan berbagai unit yang berperan dalam membentuk sebuah fitur.
+
+        Dalam konteks aplikasi React, pengujian integrasi umumnya digunakan untuk memeriksa keterkaitan antara komponen React dan DOM ketika ada interaksi tertentu.
+
+3.  **End-to-End Test**
+    Pengujian yang dilaksanakan untuk memastikan bahwa aplikasi beroperasi sesuai harapan dari awal hingga akhir. Untuk mencapai hasil yang sesungguhnya, pengujian ini harus dilakukan dalam lingkungan yang sama seperti yang digunakan oleh pengguna akhir. Sebagai contoh, ketika mengembangkan aplikasi web, pengujian end-to-end harus dilakukan di dalam peramban (browser).
+
+Semakin tinggi tingkat pengujian, semakin lambat dan mahal pengujian tersebut. Namun, pengujian pada tingkat yang lebih tinggi memiliki cakupan yang lebih luas dibandingkan dengan tingkat yang lebih rendah. Ini berarti Anda tidak perlu melakukan banyak pengujian terpisah untuk menguji seluruh aplikasi.
