@@ -1,0 +1,63 @@
+---
+title: 'Perbedaan controlled dan uncontrolled component'
+slug: 'perbedaan-controlled-dan-uncontrolled-component'
+publishedAt: '2023-12-03'
+description: 'Perbedaan antara controlled component dan uncontrolled component terletak pada bagaimana data dalam elemen form dikelola dan dipantau.'
+banner: '/blogs/perbedaan-controlled-dan-uncontrolled-component/uecj163iycpt7byfhlq6'
+image: 'https://res.cloudinary.com/de3n7a1r0/image/upload/v1701623654/blogs/perbedaan-controlled-dan-uncontrolled-component/uecj163iycpt7byfhlq6.jpg'
+tags: 'react'
+---
+
+# Pendahuluan
+
+Perbedaan antara controlled component dan uncontrolled component terletak pada bagaimana data dalam elemen form dikelola dan dipantau.
+
+## Controlled Components:
+
+Controlled components adalah elemen form di React di mana nilai input dikendalikan sepenuhnya oleh state React. Setiap kali nilai input berubah, state diperbarui, dan nilai input mencerminkan nilai dalam state. Pembaruan nilai input biasanya diatur melalui fungsi handler.
+
+Poin-poin penting yang harus dipahami:
+
+1. Nilai input dikendalikan oleh state React.
+2. Pembaruan nilai input melalui fungsi handler.
+3. Keuntungan: Kontrol penuh atas nilai input.
+4. Cocok untuk validasi dan manipulasi nilai sebelum pengirimannya.
+
+```javascript
+import { useState } from 'react';
+
+function ControlledComponentExample() {
+  const [inputValue, setInputValue] = useState('');
+
+  const handleChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
+  return <input type="text" value={inputValue} onChange={handleChange} />;
+}
+```
+
+## Uncontrolled Components:
+
+Uncontrolled components adalah elemen form di React di mana nilai input tidak dikendalikan oleh state React. Nilai input dapat diakses langsung dari DOM menggunakan referensi (ref). React tidak memiliki kontrol penuh terhadap nilai input.
+
+```javascript
+import { useRef } from 'react';
+
+function UncontrolledComponentExample() {
+  const inputRef = useRef();
+
+  const handleButtonClick = () => {
+    console.log('Nilai input:', inputRef.current.value);
+  };
+
+  return (
+    <div>
+      <input type="text" ref={inputRef} />
+      <button onClick={handleButtonClick}>Dapatkan Nilai</button>
+    </div>
+  );
+}
+```
+
+Dengan controlled components, Anda memiliki kontrol penuh atas nilai input, sementara uncontrolled components cocok untuk situasi di mana kontrol langsung React tidak diperlukan atau nilai input diakses secara langsung dari DOM. Pilihan antara keduanya bergantung pada kebutuhan dan preferensi para developer.
