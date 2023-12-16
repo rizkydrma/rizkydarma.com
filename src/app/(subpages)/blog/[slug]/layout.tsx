@@ -32,6 +32,15 @@ export const generateMetadata = async ({
       images: post?.image,
       url: `https://rizkydarma.com/blog/${params?.slug}`,
     },
+    twitter: {
+      card: 'summary_large_image',
+      title: post?.title,
+      description: post?.description,
+      siteId: '@rizkydarmar',
+      creator: 'Rizky Darma R',
+      creatorId: '@rizkydarmar',
+      images: post?.image ? [post?.image] : '',
+    },
   };
 };
 
