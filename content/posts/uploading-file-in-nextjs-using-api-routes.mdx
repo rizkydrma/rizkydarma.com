@@ -40,7 +40,7 @@ import axios from 'axios';
 import { ChangeEvent, FormEvent, useState } from 'react';
 
 export default function ComponentUpload() {
-  const [selectedFile, setSelectedFile] = (useState < File) | (null > null);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -99,7 +99,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         resolve({ fields, files });
       });
     })) as { files: any; fields: any };
-
+		
 		// data?.files?.[name_your_input_field]?.[0];
     const file = data?.files?.file?.[0];
 
