@@ -64,3 +64,16 @@ export function populatePost(posts: Post[], views: Views[] | undefined) {
 
   return populatedPost;
 }
+
+export function truncateStringByWords(inputString: string, numWords: number) {
+  const words = inputString.split(' ');
+  const truncatedWords = words.slice(0, numWords);
+  const truncatedString = truncatedWords.join(' ');
+
+  // If the original string has more words than the specified limit, add an ellipsis
+  if (words.length > numWords) {
+    return truncatedString + '...';
+  }
+
+  return truncatedString;
+}

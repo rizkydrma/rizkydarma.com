@@ -7,7 +7,11 @@ const page = async () => {
   const posts = (await getPosts()) as Post[];
   const projects = (await getProjects()) as Post[];
 
-  return <Home posts={posts} projects={projects} />;
+  const sortedPost = posts?.sort(
+    (postA, postB) => new Date(postB.publishedAt).getTime() - new Date(postA.publishedAt).getTime(),
+  );
+
+  return <Home posts={sortedPost} projects={projects} />;
 };
 
 export default page;

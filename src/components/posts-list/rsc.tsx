@@ -4,5 +4,9 @@ import PostsList from '.';
 
 export async function PostListRSC({ paginate }: { paginate?: boolean }) {
   const posts = (await getPosts()) as Post[];
-  return <PostsList posts={posts} paginate={paginate} />;
+  const sortedPost = posts?.sort(
+    (postA, postB) => new Date(postB.publishedAt).getTime() - new Date(postA.publishedAt).getTime(),
+  );
+
+  return <PostsList posts={sortedPost} paginate={paginate} />;
 }

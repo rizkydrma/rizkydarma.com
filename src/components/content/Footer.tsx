@@ -34,7 +34,7 @@ const Footer: FC<FooterProps> = ({ post, recommendations, url, showRecommendatio
         <PostList posts={recommendations}>
           {recommendations?.length && (
             <PostList.Header>
-              <h1 className={headingVariants({ size: 'sm' })}>Other Post You Might Like</h1>
+              <h1 className={headingVariants({ size: 'sm', className: 'mt-10' })}>Other Post You Might Like</h1>
             </PostList.Header>
           )}
 

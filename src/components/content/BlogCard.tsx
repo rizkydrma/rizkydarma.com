@@ -2,7 +2,7 @@ import { Post } from '@/lib/types';
 import { FC } from 'react';
 import CloudinaryImg from '../images/CloudinaryImage';
 import UnstyledLink from '../links/UnstyledLink';
-import { formatDate } from '@/lib/utils';
+import { formatDate, truncateStringByWords } from '@/lib/utils';
 import Badge from '../badge';
 import Icons from '../Icons';
 
@@ -47,7 +47,9 @@ const BlogCard: FC<BlogCardProps> = ({ post, url, urlImage }) => {
               {post?.count} views
             </p>
           </div>
-          <p className="text-sm text-stone-700 dark:text-stone-300 mt-2">{post?.description}</p>
+          <p className="text-sm text-stone-700 dark:text-stone-300 mt-2">
+            {truncateStringByWords(post?.description, 23)}
+          </p>
         </div>
       </div>
     </UnstyledLink>
