@@ -1,0 +1,192 @@
+---
+title: 'Uploading File in Nextjs using api routes'
+slug: 'uploading-file-in-nextjs-using-api-routes'
+publishedAt: '2023-12-16'
+description: 'Untuk mengunggah file melalui api routes di Next.js, kita perlu menyiapkan route API tentunya yang dapat menangani input dan membaca file atau field formnya, tapi permasalahannya nextjs api routes (pages router) belum bisa langsung membaca form input file langsung secara native, nah bagaimana kita bisa mengatasinya permasalahan tersebut? oke mari kita mulai.'
+banner: '/blogs/uploading-file-in-nextjs-using-api-routes/maksym-kaharlytskyi-Q9y3LRuuxmg-unsplash_1_ijwwhp'
+image: 'https://res.cloudinary.com/de3n7a1r0/image/upload/v1702694287/blogs/uploading-file-in-nextjs-using-api-routes/maksym-kaharlytskyi-Q9y3LRuuxmg-unsplash_1_ijwwhp.jpg'
+tags: 'react'
+---
+
+# Uploading File in Nextjs using api routes
+
+Untuk mengunggah file melalui api routes di Next.js, kita perlu menyiapkan route API tentunya yang dapat menangani input dan membaca file atau field formnya, tapi permasalahannya nextjs api routes (pages router) belum bisa langsung membaca form input file langsung secara native, nah bagaimana kita bisa mengatasinya permasalahan tersebut? oke mari kita mulai.
+
+# Pendahuluan
+
+Sebelum kita mulai _ngoding_ kita harus paham dulu konsep dari api routes di nextjs seperti apa. dibawah ini saya sudah buatkan bagaimana cara kerja api routes di nextjs.
+
+<CloudinaryImg
+  mdx
+  className="!mb-0 not-prose"
+  publicId="blogs/uploading-file-in-nextjs-using-api-routes/konsep-api-routes_r4fg4o"
+  alt="Konsep Api Routes NextJS"
+  width={800}
+  height={500}
+/>
+
+Semua ini dimulai ketika user melakukan request http ke api routes ntah itu method GET, POST, PATCH ataupun DELETE selanjutnya nextjs akan melanjutkan hit request ke API yang sudah dibuat lalu API akan membalikan sebuah response bisa berupa response berhasil dan membalikan data ataupun response gagal dari server yang nantinya akan di kembalikan lagi ke user.
+
+# Kenapa kita menggunakan API Routes?
+
+Yah, kita tau kenapa kita tidak langsung saja melakukan upload langsung saja tanpa melalui api routes di nextjs agar file bisa terbaca secara html native, toh sama-sama saja hasilnya. ya itu kembali lagi tergantung preferensi masing-masing tapi alasan yang biasa kita temui kenapa kita harus melakukan _some action to hit api_ melalui api routes adalah agar url yang sebenarnya tidak terbaca di browser (network) lebih aman.
+
+# Solusi
+
+Kita mulai dari membuat sebuah component sederhana yang isinya berupa form input file dan juga function sederhana untuk mengirimkan data ke api routes seperti ini.
+
+```jsx
+import axios from 'axios';
+import { ChangeEvent, FormEvent, useState } from 'react';
+
+export default function ComponentUpload() {
+  const [selectedFile, setSelectedFile] = (useState < File) | (null > null);
+
+  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setSelectedFile(file);
+    }
+  };
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    try {
+      const formData = new FormData();
+
+      if (selectedFile) {
+        formData.append('file', selectedFile);
+      }
+      const response = await axios.post(`/api/upload`, formData);
+
+      console.log('RESPONSE IF SUCCESS', response);
+      // YOUR CODE IF UPLOAD SUCCESS
+    } catch (error) {
+      console.log('ERROR...', error);
+      // YOUR CODE IF UPLOAD ERROR
+    }
+  };
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input type="file" name="fileUpload" onChange={handleFileChange} />
+
+        <button type="submit">Kirim</button>
+      </form>
+    </div>
+  );
+}
+```
+
+selanjutnya kita akan menghandle permintaan request di api routes nextjs, dimana nextjs belum dapat mendapatkan file yang kita kirimkan maka dari itu kita perlu bantuan dari thirdparty library yaitu [\*multiparty](https://www.npmjs.com/package/multiparty)\* untuk membaca field dan file yang kita kirim dari user di sisi server nextjs.
+
+```jsx
+import FormData from 'form-data';
+import fs from 'fs';
+import { NextApiRequest, NextApiResponse, PageConfig } from 'next;
+import axios from 'axios';
+import multiparty from 'multiparty';
+
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+  try {
+    const form = new multiparty.Form();
+
+    const data = (await new Promise((resolve, reject) => {
+      form.parse(req, function (err, fields, files) {
+        if (err) reject({ err });
+        resolve({ fields, files });
+      });
+    })) as { files: any; fields: any };
+
+		// data?.files?.[name_your_input_field]?.[0];
+    const file = data?.files?.file?.[0];
+
+    const formData = new FormData();
+
+		// convert file tobe Buffer
+    const fileBuffer = fs.readFileSync(file.path);
+
+    formData.append('file', fileBuffer, { filename: file.originalFilename });
+
+    const response = await axios.post(BASE_URL, formData, {
+      'Content-Type': 'multipart/form-data',
+    });
+
+    res.status(200).json(response?.data);
+  } catch (error) {
+    res.status(400).json(error);
+  }
+};
+
+export default handler;
+```
+
+dan jangan lupa untuk menambahkan code berikut ini di dalam file handler
+
+```jsx
+export const config: PageConfig = {
+  api: {
+    bodyParser: false,
+  },
+};
+```
+
+Code tersebut digunakan untuk mengonfigurasi opsi halaman pada Next.js terkait API. Secara khusus, ini menonaktifkan parsing body request untuk API yang terkait dengan halaman tersebut.
+
+Kita dapat mengonfigurasi berbagai aspek terkait API pada halaman Next.js. Dalam contoh ini, **`bodyParser`** diatur sebagai **`false`**, yang berarti Next.js tidak akan mengurai body dari request API. Hal ini berguna jika kita perlu menangani parsing body request secara manual atau menggunakan middleware kustom.
+
+sehingga full code untuk file handler nya menjadi seperti ini
+
+```jsx
+import FormData from 'form-data';
+import fs from 'fs';
+import { NextApiRequest, NextApiResponse, PageConfig } from 'next;
+import axios from 'axios';
+import multiparty from 'multiparty';
+
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+  try {
+    const form = new multiparty.Form();
+
+    const data = (await new Promise((resolve, reject) => {
+      form.parse(req, function (err, fields, files) {
+        if (err) reject({ err });
+        resolve({ fields, files });
+      });
+    })) as { files: any; fields: any };
+
+		// data?.files?.[name_your_input_field]?.[0];
+    const file = data?.files?.file?.[0];
+
+    const formData = new FormData();
+
+		// convert file tobe Buffer
+    const fileBuffer = fs.readFileSync(file.path);
+
+    formData.append('file', fileBuffer, { filename: file.originalFilename });
+
+		// example
+		const YOUR_URL_API = 'https://api.your.id/asset/upload';
+
+    const response = await axios.post(YOUR_URL_API, formData, {
+      'Content-Type': 'multipart/form-data',
+    });
+
+    res.status(200).json(response?.data);
+  } catch (error) {
+    res.status(400).json(error);
+  }
+};
+
+export default handler;
+
+export const config: PageConfig = {
+  api: {
+    bodyParser: false,
+  },
+};
+```
+
+Dan itulah bagaimana kita menghandle _uploading file in nextjs using api routes._ selanjutnya kita akan belajar _how to get files via api routes._ see you in next post :)
