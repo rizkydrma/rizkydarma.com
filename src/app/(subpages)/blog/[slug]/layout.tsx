@@ -36,9 +36,9 @@ export const generateMetadata = async ({
       card: 'summary_large_image',
       title: post?.title,
       description: post?.description,
-      siteId: '@rizkydarmar',
+      siteId: '@rizkydrmar',
       creator: 'Rizky Darma R',
-      creatorId: '@rizkydarmar',
+      creatorId: '@rizkydrmar',
       images: post?.image ? [post?.image] : '',
     },
   };

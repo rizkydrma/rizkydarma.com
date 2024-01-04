@@ -19,7 +19,7 @@ const footerLinks = [
 const Footer = () => {
   return (
     <div className="container min-h-[70px] border-t border-t-stone-700 dark:border-t-stone-300 flex flex-col-reverse lg:flex-row items-center justify-center lg:justify-between text-xs text-stone-700 dark:text-stone-300 font-medium gap-4 py-4">
-      <span className="">© 2023 Rizky Darma. All rights reserved.</span>
+      <span className="">© 2024 Rizky Darma. All rights reserved.</span>
 
       <div className="lg:hidden text-center">
         <h1 className="font-bold">Reach me out</h1>

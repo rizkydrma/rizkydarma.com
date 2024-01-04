@@ -109,10 +109,10 @@ const ContentLanding: FC<ContentLandingProps> = ({}) => {
             <Icons.GithubIcon size={18} className="mr-1" /> rizkydrma
           </Link>
           <Link
-            href="https://github.com/rizkydarmar"
+            href="https://twitter.com/rizkydrmar"
             className="text-stone-600 font-medium dark:text-stone-400 text-sm inline-flex items-center hover:underline transition"
           >
-            <Icons.TwitterIcon size={18} className="mr-1" /> rizkydarmar
+            <Icons.TwitterIcon size={18} className="mr-1" /> rizkydrmar
           </Link>
         </motion.div>
       </div>
