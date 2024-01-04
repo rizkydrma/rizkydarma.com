@@ -3,6 +3,7 @@ import { Suspense } from 'react';
 
 export const generateMetadata = () => {
   return {
+    metadataBase: new URL('https://rizkydarma.com'),
     title: 'Blog | Rizky Darma',
     description:
       'My blog is a haven for tech enthusiasts, curious minds, and aspiring developers who crave insights into the ever-evolving realm of frontend development. From the latest web development frameworks and design trends to practical coding tips and interactive UI/UX experiences, we`re here to unravel the mysteries of crafting captivating digital interfaces.',

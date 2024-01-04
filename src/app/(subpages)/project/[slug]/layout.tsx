@@ -22,6 +22,7 @@ export const generateMetadata = async ({
   const project = (await getProjects()).find((item) => item?.slug === params?.slug);
 
   return {
+    metadataBase: new URL('https://rizkydarma.com'),
     title: `${project?.title} | Rizky Darma`,
     description: project?.description,
     alternates: {

@@ -4,6 +4,7 @@ import { Post } from '@/lib/types';
 
 export const generateMetadata = () => {
   return {
+    metadataBase: new URL('https://rizkydarma.com'),
     title: 'Projects | Rizky Darma',
     description: 'Showcase for my projects',
     alternates: {
