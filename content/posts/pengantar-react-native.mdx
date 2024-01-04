@@ -1,0 +1,437 @@
+---
+title: 'Pengantar React Native'
+slug: 'pengantar-react-native'
+publishedAt: '2024-01-05'
+description: 'Dalam mengembangkan aplikasi menggunakan framework React Native ada 2 lingkungan pengembangan yang dipakai. Pertama menggunakan CLI atau command line interface dan yang kedua menggunakan platform Expo.'
+banner: 'banner/mobile-app_nwqvd8'
+image: 'https://res.cloudinary.com/de3n7a1r0/image/upload/v1704365496/blogs/pengantar-react-native/mobile-app_vttk1b.jpg'
+tags: 'react-native'
+---
+
+
+# React Native CLI & Expo
+
+Dalam mengembangkan aplikasi menggunakan framework React Native ada 2 lingkungan pengembangan yang dipakai. Pertama menggunakan CLI atau ***********************command line interface*********************** dan yang kedua menggunakan platform Expo.
+
+## Command Line Interface (CLI)
+
+Membuat aplikasi React Native dengan *Command Line Interface* (CLI) adalah langkah awal dalam pengembangan. Dengan memulai project menggunakan CLI, proses pengembangan menjadi lebih mudah dan kita memiliki fleksibilitas lebih dalam menggunakan modul native. Keuntungan lainnya adalah kita akan mendapatkan pembaruan dengan lebih cepat menggunakan pendekatan ini.. Berikut ini kelebihan dan kekurangan menggunakan CLI
+
+**************************Kelebihan CLI**************************
+
+- Dapat menggunakan **************native modules**************
+- Mendapatkan update lebih cepat
+
+****************************Kekurangan CLI****************************
+
+- Inisiasi project memakan waktu relatif lebih lama karena perlu beberapa konfigurasi di awal
+- Platform khusus Butuh pemahaman ekstra, Kalo kita bikin buat iOS atau Android, beberapa hal mungkin perlu ditangani manual. Ini bisa bikin sedikit ngelag karena agak ribet.
+
+## Expo
+
+Expo adalah suatu *****tools***** yang dibuat diatas React Native yang membantu untuk lebih mudah dalam membuat project IOS dan Android. Expo menjadi terkenal karena kemudahan dan fasilitasnya seperti XDE, Expo CLI, Expo Client, Expo SDK. Berikut kelebihan dan kekurangan Expo:
+
+******************Kelebihan Expo******************
+
+- Memulai project lebih mudah
+- Kolaborasi dengan tim lebih mudah dengan adanya Expo Client
+- Dapat di ******Eject****** untuk menjadi React Native CLI
+- Expo bisa langsung membuat file .ipa dan .apk serta mendeploynya ke store
+
+************************Kekurangan Expo************************
+
+- Tidak bisa menggunakan **************native modules**************
+- Ukuran aplikasi *“membengkak”,* untuk aplikasi sederhana seperti “Hello World” dapat mencapai kurang lebih 15mb
+- Ketika ******Eject****** versi sesuai dengan Expokitnya
+- Update React Native lebih lama karna membutuhkan banyak penyesuaian
+
+# *Project Structure*
+
+Project React Native yang diinisiasi dengan CLI memiliki struktur seperti gambar dibawah ini, saat ini saya menggunakan versi React Native di versi 73.1
+
+<CloudinaryImg
+  mdx
+  className="!mb-0 not-prose"
+  publicId="blogs/pengantar-react-native/project-structure_atr1fz"
+  alt="project stucture"
+  width={800}
+  height={630}
+/>
+
+| Nama file/folder | Deskripsi |
+| --- | --- |
+| test | Folder tempat file untuk melakukan berbagai jenis testing terhadap aplikasi |
+| .bundle | Folder untuk menyimpan file bundel JavaScript hasil dari proses bundling menggunakan Metro Bundler |
+| android | Folder tempat berbagai script untuk menjalankan aplikasi android |
+| ios | Folder tempat berbagai script untuk menjalankan aplikasi IOS |
+| node_modules | Folder tempat berbagai package node.js berada |
+| vendor | Folder menyimpan dependensi project (seperti file pihak ketiga dan kode lain yang dirujuk oleh project Anda yang tidak Anda tulis sendiri). |
+| .eslintrc.js | Konfigurasi untuk https://eslint.org/, Linter untuk Javascript dan JSX |
+| .gitignore | Konfigurasi untuk file atau folder git yang tidak perlu dimasukan dan version control yang unik untuk setiap mesing pengembangan |
+| .prettierrc.js | Konfigurasi untuk styling kode |
+| .watchmanconfig | Konfigurasi untuk https://facebook.github.io/watchman/, alat untuk mendeteksi perubahan dalam project directory |
+| app.json | Tempat untuk edit nama aplikasi |
+| App.tsx | Default komponen utama dalam project React Native |
+| babel.config.js | Konfigurasi untuk https://babeljs.io/, Compiler dan Transpiler untuk Javascript |
+| Gemfile | File dalam proyek React Native ini digunakan untuk mengelola dependensi pada permata Ruby yang diperlukan untuk membangun dan menerapkan aplikasi pada platform iOS dan Android. |
+| Gemfile.lock | File ini memastikan bahwa ketika proyek diinstal di lingkungan yang berbeda, versi yang digunakan tetap konsisten. Gemfile.lock membantu menghindari perbedaan versi yang tidak diinginkan dan memastikan replikabilitas instalasi proyek Ruby. |
+| index.js | File utama tempat kita meregistrasi komponen untuk dirender |
+| jest.config.js | File ini digunakan untuk konfigurasi Jest, yakni framework pengujian JavaScript. Di dalamnya, kamu bisa menyesuaikan pengaturan pengujian seperti path test, modul transform, atau setup tambahan yang diperlukan dalam pengujian proyek React Native. |
+| metro.config.js | Konfigurasi untuk https://metrobundler.dev/, Bundler Javascript untuk React Native |
+| package-lock.json | File ini berfungsi sebagai file yang merekam versi eksak dari setiap modul dan dependensinya dalam proyek Node.js. File ini memastikan konsistensi instalasi dependensi di berbagai mesin pengembangan atau produksi. |
+| package.json | file tempat daftar dependency yang project gunakan, juga comman line untuk berinteraksi dengan project |
+| README.md | File ini berfungsi sebagai dokumentasi proyek. Biasanya berisi informasi tentang cara menjalankan, menginstal dependensi, dan panduan singkat penggunaan project. |
+| tsconfig.json | File ini memiliki fungsi sebagai konfigurasi TypeScript untuk mengatur berbagai opsi dan perilaku saat mengonversi kode TypeScript ke JavaScript. |
+
+# JSX
+
+JSX adalah singkatan dari ***********************Javascript eXtension,*********************** merupakan ekstensi React yang membuat kita bisa menulis Javascript yang mirip seperti HTML. JSX dibuat untuk mempermudah pengembangan web dengan ReactJS atau aplikasi mobile dengan React Native.
+
+contoh JSX:
+
+```jsx
+  const a = <View />;
+  const b = (
+    <View name="John Doe" age={23}>
+      <Text>Hello World</Text>
+    </View>
+  );
+```
+
+JSX jika sudah dicompile oleh Babel
+
+```jsx
+  var a = React.createElement(View, null);
+  var b = React.createElement(
+    View,
+    {
+      name: 'John Doe',
+      age: 23,
+    },
+    React.createElement(Text, null, 'Hello World'),
+  );
+```
+
+# React Component
+
+React Component adalah susunan kode yang dapat di render menjadi tampilan atau UI. React component juga merupakan bagian fundamental dalam pengembangan aplikasi web dengan menggunakan ReactJS ataupun mobile dengan React Native. Mereka adalah blok kode pembangun yang dapat dipakai kembali yang membantu memisahkan dan mengorganisir tata letak serta logika aplikasi. Berikut adalah contoh sederhana dari komponen React:
+
+```jsx
+import React from 'react';
+
+const MyComponent = () => {
+	return (
+			<View>
+				<Text>This is my first component</Text>
+			</View>
+	);
+};
+
+export default MyComponent;
+```
+
+Dalam contoh diatas. “MyComponent” adalah komponent React yang sederhana untuk menampilkan tulisan berupa “This is my first component”.
+
+# State dan Props
+
+State dan props adalah konsep penting untuk mengelola data dan komunikasi antar komponen.
+
+## State
+
+State adalah data *private* sebuah component. Data ini hanya tersedia untuk component tersebut dan tidak bisa di akses dari component lain. Component dapat merubah statenya sendiri.
+
+- Digunakan untuk menyimpan data internal komponen.
+- Dapat diubah oleh komponen itu sendiri menggunakan fungsi `setState()`
+
+Contoh penggunaan state:
+
+```jsx
+import React, { useState } from 'react';
+import { View, Text, Button } from 'react-native';
+
+const Counter = () => {
+  //state
+  const [count, setCount] = useState(0);
+
+  //fungsi perubahan state
+  const increment = () => {
+    setCount(count + 1);
+  };
+
+  return (
+    <View>
+      <Text>{count}</Text>
+      <Button title="Increment" onPress={increment} />
+    </View>
+  );
+};
+
+export default Counter;
+```
+
+## Props
+
+*Props* singkatan dari *Property*. Ini cukup simple, apalagi jika anda sudah terbiasa dengan HTML, ini mirip seperti atrribute pada tag HTML. Dalam pembuatannya, jika dalam *functional component* maka *prop* ini adalah parameternya.
+
+- Digunakan untuk mentransfer data dari komponen *parent* ke *child*.
+- Bersifat *read-only* di komponen *child*.
+
+Contoh penggunaan Props
+
+```jsx
+import React from 'react';
+import { View, Text } from 'react-native';
+
+const Greeting = (props) => {
+  return (
+    <View>
+      <Text>Hello, {props.name}!</Text>
+    </View>
+  );
+};
+
+export default Greeting;
+```
+
+# React Native Core Component
+
+************************Core component************************ merupakan komponen utama yang disediakan oleh React Native untuk membangun UI yang diinginkan. berikut beberapa komponen utama yang paling sering digunakan:
+
+| Nama Komponen  | Deskripsi |
+| --- | --- |
+| \<View> | View adalah komponen paling fundamental dimana ia menjadi container bagi semua komponen lainnya. View menggunakan flexbox pada prinsip desainnya (styling). |
+| \<Text> | Text merupakan komponen untuk menampilkan text dalam berbagai tipe. |
+| \<TextInput> | TextInput merupkan komponen untuk membuat form atau field input dengan berbagai tipe. |
+| \<Image> | Image merupakan komponen untuk merender gambar baik dari suatu url ataupun data dari local. |
+| \<Button> | Button komponen tombol untuk berinteraksi dengan user dan menjalankan suatu fungsi tertentu. Jika membutuhkan styling yang lebih fleksibel bisa menggunakan \<TouchableOpacity>. |
+| \<ScrollView> | ScrollView hampir sama dengan View namun memiliki kelebihan untuk dapat menampikan data atau tampilan yang melebihi Viewport device. |
+| \<FlatList> | FlatList merupakan komponen untuk merender data yang banyak menjadi tampilan. FlatList memiliki kelebihan karena ada beberapa konfigurasi untuk optimasi proses mengolah data. |
+| \<TouchableOpacity> | TouchableOpacity adalah komponen inti dalam React Native yang digunakan untuk membuat area sentuh yang memberikan umpan balik respons saat disentuh. Ini membantu membuat antarmuka pengguna lebih responsif dan interaktif. |
+
+# ****Component Lifecycle****
+
+Suatu komponen memiliki siklus ‘hidup’ nya sendiri, dimulai dari inisiasi, *****mounting,***** render, *updation, unmounting* sampai suatu komponen dihancurkan. *Lifecycle* ini berguna untuk mengeksekusi suatu hal pada satu titik waktu tertentu. Perhatikan gambar berikut untuk mengetahui diagram ********************component lifecycle:********************
+
+<CloudinaryImg
+  mdx
+  className="!mb-0 not-prose"
+  publicId="blogs/pengantar-react-native/component-lifecycle_ed88ce"
+  alt="piramida"
+  width={800}
+  height={365}
+/>
+
+****************************Initialization****************************
+
+Fase ini merupakan awal dimana props dan state yang ada dibaca dan disiapkan.
+
+****************Mounting****************
+
+Mountin adalah proses pengaplikasian component yang ada untuk dapat ditampilkan.
+
+1. `componentWillMount()` fungsi ini hanya berjalan satu kali, pada saat sebelum komponen di render.
+2. `render` ini adalah proses pengaplikasian komponen menjadi UI untuk ditampilkan
+3. `componentDidMount` ketika komponen selesai di render, fungsi ini dijalankan, hanya satu kali saja
+
+****************Updation****************
+
+Updation merupakan proses yang terus berlangsung pada saat komponen sudah di render, terjadi jika ada perubahan pada props atau state.
+
+1. `componentWillReceiveProps()` fungsi ini akan dieksekusi bila state yang ada di component akan di update atau di ubah dengan nilai props yang baru.
+2. `shouldComponentUpdate()` tugasnya adalah untuk menentukan apakah sebuah component akan di render ulang atau tidak. Method ini akan mengembalikan nilai boolean true or false, jika true maka component akan di render ulang atau sebaliknya.
+3. `componentWillUpdate()` fungsi ini akan dieksekusi jika fungsi shouldComponentUpdate mengembalikan nilai true.
+4. `componentDidUpdate` fungsi ini sama dengan componentDidMount yaitu untuk manipulasi DOM dan request data.
+
+********************Unmounting********************
+
+`componentWillUnmount()` fungsi ini berjalan sebelum user keluar atau komponen akan hancur. biasanya digunakan untuk menghapus listener atau continous function.
+
+# Flexbox
+
+Untuk dapat memahami bagaimana struktur layout dari tampilan React Native kita harus memahami konsep Flexbox. Flexbox di React Native hampir sama seperti `display: flex` pada css, hanya dengan sedikit perbedaan default. Berikut adalah konsep dasar Flexbox pada React Native:
+
+<CloudinaryImg
+  mdx
+  className="!mb-0 not-prose"
+  publicId="blogs/pengantar-react-native/flexbox_ydikjp"
+  alt="piramida"
+  width={800}
+  height={500}
+/>
+
+
+
+component dalam flexbox akan mengikuti main-axis yang ditentukan lewat styling `flexDirection`. untuk mempermudah memahami selanjutnya kita akan membuat simulasi penggunaan flex.
+
+## Flex Sizing
+
+Ketika kita menetapkan **`flex: 1`** di React Native, kita memberikan elemen kemampuan untuk mengisi sebanyak mungkin ruang yang tersedia dalam kontainernya. Ini berguna ketika kita memiliki beberapa elemen di dalam satu kontainer dan ingin mereka mendistribusikan ruang dengan merata. Contohnya seperti kode berikut:
+
+```jsx
+import {StyleSheet, Text, View} from 'react-native';
+import React from 'react';
+
+const App = () => {
+  return (
+    <View style={styles.mainContainer}>
+      <Text style={styles.headerText}>Flex Sizing</Text>
+      <View style={styles.container} />
+      <View style={styles.container2} />
+      <View style={styles.container3} />
+    </View>
+  );
+};
+
+export default App;
+
+const styles = StyleSheet.create({
+  mainContainer: {
+    flex: 1,
+    backgroundColor: 'pink',
+    paddingHorizontal: 20,
+  },
+  headerText: {
+    fontSize: 32,
+    color: 'black',
+    textAlign: 'center',
+  },
+  container: {
+    flex: 1,
+    backgroundColor: '#aaa',
+  },
+  container2: {
+    flex: 1,
+    backgroundColor: '#ccc',
+  },
+  container3: {
+    flex: 1,
+    backgroundColor: '#eee',
+  },
+});
+```
+
+dalam kode diatas style `mainContainer` merupakan pembungkus dari komponen didalamnya, `mainContainer` diberi `flex: 1` sehingga ia akan memenuhi semua ruang yang ada, namun perhatikan style `container`, `container2` dan `container3` mereka diberi masing-masing `flex: 1` sehingga mereka akan membagi ruang yang tersedia masing-masing dibagi 1, sehingga memiliki ukuran yang sama namun berbeda jika salah satu diberi flex lebih dari 1, maka ia akan lebih besar 2x dari `flex: 1`
+
+<CloudinaryImg
+  mdx
+  className="!mb-0 not-prose"
+  publicId="blogs/pengantar-react-native/flex-sizing_vmiezc"
+  alt="flex sizing"
+  width={375}
+  height={835}
+/>
+
+
+
+## Flex Direction
+
+`flexDirection` membuat kita bisa memposisikan tiap komponen dalam container untuk mengikuti *main axis* nya, perlu kita ingat bahwa secara ********default********  jika kita tidak set directionnya maka *`flexDirection`* nya adalah **********‘column’.********** contoh penggunaan dan sifat direction di React Native seperti gambar-gambar berikut:
+
+<CloudinaryImg
+  mdx
+  className="!mb-0 not-prose"
+  publicId="blogs/pengantar-react-native/flex-direction_eko4xn"
+  alt="flex direction"
+  width={800}
+  height={340}
+/>
+
+## Justify Content
+
+Justify content mengatur komponen yang ada didalam flexbox untuk berada pada posisi yang ditentukan, mengikuti main-axis. Contohnya pengaplikasianya dapat dilihat pada gambar berikut:
+
+<CloudinaryImg
+  mdx
+  className="!mb-0 not-prose"
+  publicId="blogs/pengantar-react-native/justify-content_akjmu1"
+  alt="justify content"
+  width={800}
+  height={900}
+/>
+
+## Align Items
+
+Sebaliknya dari `justifyContent`, `alignItems` ini memposisikan komponen pada ***cross-axis*** nya. Contohnya pengaplikasianya dapat dilihat pada gambar berikut:
+
+<CloudinaryImg
+  mdx
+  className="!mb-0 not-prose"
+  publicId="blogs/pengantar-react-native/align-items_yl05by"
+  alt="piramida"
+  width={800}
+  height={340}
+/>
+
+khusus untuk `alignItems` stretch komponen harus tidak memiliki width agar *******stretch******* bisa diterapkan ke komponen.
+
+## Align Self
+
+Jika konfigurasi sebelumnya memaparkan tata letak untuk *child* komponen, atau komponen dalam flexbox, `alignself` mempengaruhi posisi dari child komponen sendiri terhadap flexbox. `alignself` memposisikan komponen pada *cross-axis*, mengungguli `alignItems` dari parentnya. 
+
+<CloudinaryImg
+  mdx
+  className="!mb-0 not-prose"
+  publicId="blogs/pengantar-react-native/align-self_ga1494"
+  alt="piramida"
+  width={800}
+  height={340}
+/>
+
+contoh diatas menerapkan `alignItems` pada *parent* komponen dan `alignSelf` pada ******child****** komponen, bisa dilihat menerapkan `alignSelf` pada ******child****** komponen akan mengunggui `alignItems` pada ******parent****** komponennya.
+
+## Flex Wrap
+
+`flexWrap` menetukan apakah beberapa komponen akan berada didalam flexBox ataukah keluar dari Viewport flexbox (yang membuatnya menjadi tidak kelihatan jika tidak berada didalam `ScrollView`)
+
+<CloudinaryImg
+  mdx
+  className="!mb-0 not-prose"
+  publicId="blogs/pengantar-react-native/flex-wrap_nv1xmr"
+  alt="piramida"
+  width={800}
+  height={545}
+/>
+
+## Align Content
+
+Jika kamu menggunakan `flexWrap: 'wrap'` maka `alignContent` akan membantumu mengatur posisi dari komponen pada *cross-axis.*
+
+<CloudinaryImg
+  mdx
+  className="!mb-0 not-prose"
+  publicId="blogs/pengantar-react-native/align-content_kuf3sw"
+  alt="align content"
+  width={800}
+  height={1000}
+/>
+
+## Position & Relative Layout
+
+Tipe ******layout****** suatu elemen menentukan bagaimana elemen tersebut ditempatkan dalam induknya.
+
+- *relative* (*default value*) Secara default, suatu elemen ditempatkan secara *relative*. Ini berarti elemen tersebut ditempatkan sesuai dengan alur normal ******layout******, dan kemudian di geser ********relative******** terhadap posisi itu berdasarkan nilai-nilai *top*, *right*, *bottom*, dan *left*. Memberikan nilai *******************top, right, bottom, dan left******************* ini tidak mempengaruhi posisi elemen-elemen saudara atau elemen induknya.
+- *absolute* Ketika ditempatkan secara *absolute*, suatu elemen tidak ikut serta dalam alur ******layout****** normal. Sebaliknya, elemen tersebut diatur secara independen dari saudara-saudaranya. Posisi ditentukan berdasarkan nilai-nilai *top*, *right*, *bottom*, dan *left*.
+
+<CloudinaryImg
+  mdx
+  className="!mb-0 not-prose"
+  publicId="blogs/pengantar-react-native/position_v0gxbf"
+  alt="piramida"
+  width={600}
+  height={540}
+/>
+
+## Z Index
+
+`zIndex` berguna untuk menentukan komponen yang paling utama, atau yang dikehendaki ada paling atas diantara tumpukan komponen dengan `position 'absolute'` semakin besar *****value***** `zIndex` nya semakin atas dalam tumpukan komponen. seperti contoh berikut ini:
+
+<CloudinaryImg
+  mdx
+  className="!mb-0 not-prose"
+  publicId="blogs/pengantar-react-native/zindex_ib6cic"
+  alt="piramida"
+  width={375}
+  height={765}
+/>
+
+dalam contoh di atas komponen pertama diberi `zIndex: 1`, komponen ke 2 diberi `zIndex: 3`, dan komponen ke terakhir diberi `zIndex: 2`, sehingga komponen ke 2 berada paling atas dalam tumpukan komponen.
